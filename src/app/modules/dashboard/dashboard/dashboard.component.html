@@ -1,0 +1,417 @@
+<body class="sb-nav-fixed">
+    <section id="layoutSidenav_content">
+        <!--Main-->
+        <main class="content-padding1">
+  
+            <!--Container Fluid-->
+            <div class="container-fluid">
+                <div class="border-bottom-dark page-header">
+                    <div class="d-flex justify-content-between">
+                        <h5 class="font-weight-bold mb-0 mt-3 ml-2 w-100">Dashboard</h5>
+                    </div>
+                </div>
+                <div class=" hide-rel container-fluid mt-4">
+                    <button class="btn btn-link hide-btn"
+                        id="sidebarToggle" (click)="hideMenu()"><i
+                            class="fa fa-angle-double-right text-dark"></i></button>
+                    <div class="row mt-3">
+                         <div class="col-lg-12 col-md-12 col-xl-12"
+                            [ngClass]="{'slide-right-close':slideMenuHide == false}">
+                            <div class="role-description">
+                               <div class="row">
+                                   <div class="col-lg-6 col-md-12">
+                                       <div class="mb-5">
+                                        <h6 class="border-bottom pb-2 mb-3">Products by Status</h6>
+                                        <div class="table-responsive min-264px">
+                                            <table class="table table-bordered">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Name</th>
+                                                        <th>Amount</th>
+                                                        <th>Percent</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td>Reviewed</td>
+                                                        <td>21</td>
+                                                        <td>19,27%</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Not Ready</td>
+                                                        <td>3</td>
+                                                        <td>2,75%</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Prepared</td>
+                                                        <td>13</td>
+                                                        <td>11,93%</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Draft</td>
+                                                        <td>51</td>
+                                                        <td>46,79%</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Ready</td>
+                                                        <td>21</td>
+                                                        <td>19,27%</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><b>Total</b></td>
+                                                        <td><b>109</b></td>
+                                                        <td><b>100%</b></td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                       </div>
+                                       <div class="mb-4">
+                                        <h6 class="border-bottom pb-2 mb-3">Products without main image</h6>
+                                        <div class="table-responsive">
+                                            <table class="table table-bordered">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Name</th>
+                                                        <th>SKU</th>
+                                                        <th>Active</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td>Apple iPhone</td>
+                                                        <td>233563590</td>
+                                                        <td><input type="checkbox"></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Apple iPhone 11</td>
+                                                        <td>336996476</td>
+                                                        <td><input type="checkbox"></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Apple iPhone 11 28Gb</td>
+                                                        <td>716606488</td>
+                                                        <td><input type="checkbox"></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Apple iPhone 11 28Gb Black</td>
+                                                        <td>735229705</td>
+                                                        <td><input type="checkbox" checked></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Apple iPhone 11 28Gb Purple</td>
+                                                        <td>638972892</td>
+                                                        <td><input type="checkbox" checked></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Apple iPhone 11 64Gb</td>
+                                                        <td>839723366</td>
+                                                        <td><input type="checkbox"></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Apple iPhone 11 64Gb Black</td>
+                                                        <td>320597734</td>
+                                                        <td><input type="checkbox" checked></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Apple iPhone 11 64Gb White</td>
+                                                        <td>862013002</td>
+                                                        <td><input type="checkbox" checked></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Bershka tie detail pink chiffon skirt</td>
+                                                        <td>453514291</td>
+                                                        <td><input type="checkbox" checked></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Bershka vinyl strappy heeled pumps</td>
+                                                        <td>264306524</td>
+                                                        <td><input type="checkbox" checked></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><a href="#!">Show More</a></td>
+                                                        <td></td>
+                                                        <td></td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                       </div>
+                                   </div>
+                                   <div class="col-lg-6 col-md-12">
+                                      <div class="mb-4">
+                                        <h6 class="border-bottom pb-2 mb-3">Channels</h6>
+                                        <div class="table-responsive">
+                                            <table class="table table-bordered">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Channel</th>
+                                                        <th>Products</th>
+                                                        <th>Active</th>
+                                                        <th>Not Active</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td>Amazon DE</td>
+                                                        <td>5</td>
+                                                        <td>5</td>
+                                                        <td>0</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Amazon EN</td>
+                                                        <td>1</td>
+                                                        <td>1</td>
+                                                        <td>0</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Magento 2 Shop</td>
+                                                        <td>19</td>
+                                                        <td>19</td>
+                                                        <td>0</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>OXID EE Shop</td>
+                                                        <td>6</td>
+                                                        <td>6</td>
+                                                        <td>0</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Retailer</td>
+                                                        <td>6</td>
+                                                        <td>6</td>
+                                                        <td>0</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>VIP Wholesales</td>
+                                                        <td>12</td>
+                                                        <td>12</td>
+                                                        <td>0</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Wholesales</td>
+                                                        <td>57</td>
+                                                        <td>33</td>
+                                                        <td>24</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                      </div>
+                                      <div class="mb-4">
+                                        <h6 class="border-bottom pb-2 mb-3">Products without associated products</h6>
+                                        <div class="table-responsive">
+                                            <table class="table table-bordered">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Name</th>
+                                                        <th>SKU</th>
+                                                        <th>Active</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td>Apple iPhone</td>
+                                                        <td>925575278</td>
+                                                        <td><input type="checkbox"></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Apple iPhone 11</td>
+                                                        <td>222579292</td>
+                                                        <td><input type="checkbox"></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Apple iPhone 11 28Gb</td>
+                                                        <td>619557592</td>
+                                                        <td><input type="checkbox"></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Apple iPhone 11 28Gb Black</td>
+                                                        <td>368976311</td>
+                                                        <td><input type="checkbox" checked></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Apple iPhone 11 28Gb Purple</td>
+                                                        <td>482730364</td>
+                                                        <td><input type="checkbox" checked></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Apple iPhone 11 64Gb</td>
+                                                        <td>421297597</td>
+                                                        <td><input type="checkbox"></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Apple iPhone 11 64Gb Black</td>
+                                                        <td>721163686</td>
+                                                        <td><input type="checkbox" checked></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Apple iPhone 11 64Gb White</td>
+                                                        <td>957475525</td>
+                                                        <td><input type="checkbox" checked></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Bershka tie detail pink chiffon skirt</td>
+                                                        <td>454977055</td>
+                                                        <td><input type="checkbox" checked></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Bershka vinyl strappy heeled pumps</td>
+                                                        <td>712946208</td>
+                                                        <td><input type="checkbox" checked></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><a href="#!">Show More</a></td>
+                                                        <td></td>
+                                                        <td></td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                       </div>
+                                   </div>
+                                   <div class="col-lg-6 col-md-12"></div>
+                                   <div class="col-lg-6 col-md-12"></div>
+                               </div>
+                            </div>
+                        </div>
+                        <!-- <div class="col-lg-12 col-md-12 col-xl-9"
+                            [ngClass]="{'slide-right-close':slideMenuHide == false}">
+                            <div class="role-description">
+                                <app-dashboard-charts></app-dashboard-charts>
+                            </div>
+                        </div> -->
+                       <!-- <div class="col-lg-12 col-md-12 col-xl-3 slide-right-open" *ngIf=slideMenuHide>
+                            <div class="login">
+                              <div class="new-today pb-4">
+                                <div class="d-flex justify-content-between border-bottom">
+                                  <h6 class="font-weight-bold"><b>To Do List</b>
+                                    <a href="/todo-list" 
+                                    ></a></h6>
+                                </div>
+              
+                                <div
+                                  class="new-today-items pt-1"
+                                 
+                                >
+                                 
+                                  <div class="d-flex new-today-item">
+                                    <div class="comp-data">
+                                      <div class="media text-muted">
+                                       
+                                        <h6 class="mr-2 mb-0">data.title</h6>
+                                      </div>
+                                    </div>
+                                    <div class="d-flex">
+                                      <button
+                                        [routerLink]="['/todo-list', 'view']"
+                                        class="btn btn-xs tableicon bluclr btn-view-hover"
+                                        data-title="Edit"
+                                        data-toggle="modal"
+                                        data-target="#edit"
+                                      >
+                                        <i
+                                          class="fa fa-external-link fa-lg custom-link"
+                                          aria-hidden="true"
+                                        ></i>
+                                      </button>
+                                    </div>
+                                  </div>
+                                
+                                
+                                 
+                                </div>
+                              </div>
+                              
+                                <div class="new-today pb-4">
+                                    <div class="d-flex justify-content-between border-bottom">
+                                      <h6 class="font-weight-bold"><b>Upcoming Promotions</b>
+                                        <a href="/promotions" 
+                                        >
+                                      </a></h6>
+                                    </div>
+                               
+                                    <div
+                                      class="new-today-items pt-1"
+                                     
+                                    >
+                                    
+                                      <div class="d-flex new-today-item">
+                                        <div class="comp-data">
+                                          <div class="media text-muted">
+                                            <h6 class="mr-2 mb-0">Promotion Name</h6>
+                                          </div>
+                                        </div>
+                                        <div class="d-flex">
+                                          <button
+                                            [routerLink]="['/promotions', 'view']"
+                                            class="btn btn-xs tableicon bluclr btn-view-hover"
+                                            data-title="Edit"
+                                            data-toggle="modal"
+                                            data-target="#edit"
+                                          >
+                                            <i
+                                              class="fa fa-external-link fa-lg custom-link"
+                                              aria-hidden="true"
+                                            ></i>
+                                          </button>
+                                        </div>
+                                      </div>
+                                    
+                                    
+                                    
+                                    </div>
+                                  </div>
+                            
+                                <div class="new-today" >
+                                    <div class="d-flex justify-content-between border-bottom">
+                                      <h6 class="font-weight-bold"><b>Top Exceptions</b></h6>
+                                          <a type="button" class="font-weight-bold">View All</a>
+                                    </div>
+                                  
+                                    <div class="new-today-items pt-1">
+                                      
+                                      <div class="d-flex new-today-item">
+                                        <div class="comp-data">
+                                          <div class="media text-muted d-flex align-items-center">
+                                            <h6 class="mr-2 mb-0">data.exception</h6>
+                                            <a  class="mr-2 mb-0 any-link app-wd">data.data</a>
+                                            <h6 class="=mr-2 mb-0 app-bg app-wd"> data.appName </h6>
+                                          </div>
+                                        </div>
+                                        <div class="d-flex">
+                                          <button
+                                            [routerLink]="[
+                                              '/forecast-exceptions',
+                                           
+                                              'view'
+                                            ]"
+                                            class="btn btn-xs tableicon bluclr btn-view-hover"
+                                            data-title="Edit"
+                                            data-toggle="modal"
+                                            data-target="#edit"
+                                           
+                                          >
+                                            <i
+                                              class="fa fa-external-link fa-lg custom-link"
+                                              aria-hidden="true"
+                                            ></i>
+                                          </button>
+                                        </div>
+                                      </div>
+                                    </div>
+                                </div>
+                               
+                            </div>
+                        </div>   -->
+                    </div>
+                </div>
+            </div>
+            <!--End container Fluid-->
+        </main>
+        <!--End Main-->
+    </section>
+    <!--End Layout Sidenav Content-->
+  </body>
+
+  

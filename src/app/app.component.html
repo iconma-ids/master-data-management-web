@@ -1,0 +1,265 @@
+<div class="sidebar close">
+  <div class="logo-details d-flex justify-content-center" *ngIf="showLogo1 == true">
+    <img src="../assets/img/config-fav.png" height="36">
+  </div>
+  <div class="logo-details d-flex justify-content-center" *ngIf="showLogo2 == true">
+    <img src="../assets/img/config-fav.png" height="42">
+  </div>
+  <ul class="nav-links">
+    <li>
+      <div class="iocn-link">
+        <a>
+          <i class='bx bx-grid-alt'></i>
+          <span class="link_name">Dashboard</span>
+        </a>
+        <i class='bx bxs-chevron-down arrow'></i>
+      </div>
+      <ul class="sub-menu">
+        <li><a [routerLink]="['/']"><i class='bx bx-user-circle ic-class'></i>Dashboard</a></li>
+      </ul>
+    </li>
+    <li>
+      <div class="iocn-link">
+        <a>
+          <i class='bx bx-bar-chart'></i>
+          <span class="link_name">Data Model</span>
+        </a>
+        <i class='bx bxs-chevron-down arrow'></i>
+      </div>
+      <ul class="sub-menu">
+        <li><a [routerLink]="['/data-model']"><i class='bx bx-table ic-class'></i>Table</a></li>
+        <li><a [routerLink]="['/data-model/column']"><i class='bx bx-columns ic-class'></i>Column</a></li>
+      </ul>
+    </li>
+    <li>
+      <div class="iocn-link">
+        <a>
+          <i class='bx bx-data'></i>
+          <span class="link_name">Master Data</span>
+        </a>
+        <i class='bx bxs-chevron-down arrow'></i>
+      </div>
+      <ul class="sub-menu">
+        <li><a [routerLink]="['/UseCaseThree']"><i class='bx bx-store ic-class'></i>Market</a></li>
+        <li><a [routerLink]="['/UseCaseThree']"><i class='bx bx-vertical-center ic-class'></i>Channel</a></li>
+        <li><a [routerLink]="['/UseCaseThree']"><i class='bx bx-package ic-class'></i>Product</a></li>
+        <li><a [routerLink]="['/UseCaseThree']"><i class='bx bx-current-location ic-class'></i>Location</a></li>
+        <li><a [routerLink]="['/UseCaseThree']"><i class='bx bx-box ic-class'></i>Sourcing</a></li>
+        <li><a [routerLink]="['/UseCaseThree']"><i class='bx bx-detail ic-class'></i>BOM</a></li>
+        <!-- <li><a [routerLink]="['/UseCaseFive/user']"><i class='bx bx-user ic-class'></i>User</a></li> -->
+      </ul>
+    </li>
+    <li>
+      <div class="iocn-link">
+        <a>
+          <i class='bx bx-sitemap'></i>
+          <span class="link_name">Workflow</span>
+        </a>
+        <i class='bx bxs-chevron-down arrow'></i>
+      </div>
+      <ul class="sub-menu">
+        <li><a [routerLink]="['/workflow']"><i class='bx bx-user-circle ic-class'></i>Workflow</a></li>
+      </ul>
+    </li>
+    <li>
+      <div class="iocn-link sats">
+        <a>
+          <i class='bx bx-file'></i>
+          <span class="link_name">File</span>
+        </a>
+        <i class='bx bxs-chevron-down arrow'></i>
+      </div>
+      <ul class="sub-menu">
+        <li><a [routerLink]="['/file-explorer']"><i class='bx bx-file ic-class'></i>File</a></li>
+      </ul>
+    </li>
+  </ul>
+</div>
+<section class="home-section">
+  <div class="home-content">
+
+    <div class="dashboard-nav p-3 px-4 d-flex align-items-center justify-content-between">
+      <div class="nav-left d-flex align-items-center">
+        <i class='bx bx-menu' (click)="togglemenu()"></i>
+        <div class="nav-search-section ml-3">
+          <input type="search" class="form-control p-2" placeholder="Search Here">
+        </div>
+      </div>
+      <div class="nav-right">
+        <div ngbDropdown class="d-inline-block profile-drop" display="dynamic">
+          <button type="button" class="btn notification-button" id="dropdownBasic1" ngbDropdownToggle>
+            <!-- <img src="../assets/img/no" class="notification-bell"> -->
+            <i class="bx bx-bell bx-ms vertical-sub notification-bell-animation notification-bell"></i>
+            <span class="notification-count position-abs">16</span>
+          </button>
+          <div ngbDropdownMenu aria-labelledby="dropdownBasic1" class="notification-dropdown">
+            <div class="notifcations-header">
+              <h6 class="bx-ms mb-0">Notifications Center</h6>
+              <h6 class="font-weight-md notification-count mb-0">16</h6>
+            </div>
+            <div class="ovr">
+              <button ngbDropdownItem class="dropdown-item item-border py-1 notif-item pl-3">
+                <div class="d-flex align-items-center pr-3">
+                  <div class="mr-2">
+                    <div class="icon-circle bg-secondary">
+                      <i class="bx bx-user bx-xs text-white"></i>
+                    </div>
+                  </div>
+                  <div>
+                    <div class="d-flex align-items-center justify-content-between w-287">
+                      <h6 class="font-weight-md notification-label over-text mb-0">
+                        User Management
+                      </h6>
+                      <p class="small mb-0">
+                        <!-- {{ notification.createdDate | date: "mediumDate" }} -->
+                        21-10-2024
+                      </p>
+                    </div>
+                    <p class="notif-des over-text1 mb-0">
+                      New User Added
+                    </p>
+                  </div>
+                </div>
+              </button>
+              <button ngbDropdownItem class="dropdown-item item-border py-1 notif-item pl-3">
+                <div class="d-flex align-items-center pr-3">
+                  <div class="mr-2">
+                    <div class="icon-circle bg-secondary">
+                      <i class="bx bx-line-chart bx-xs text-white"></i>
+                    </div>
+                  </div>
+                  <div>
+                    <div class="d-flex align-items-center justify-content-between w-287">
+                      <h6 class="font-weight-md notification-label over-text mb-0">
+                        Sales Reports
+                      </h6>
+                      <p class="small mb-0">
+                        <!-- {{ notification.createdDate | date: "mediumDate" }} -->
+                        16-10-2024
+                      </p>
+                    </div>
+                    <p class="notif-des over-text1 mb-0">
+                      Sales Data Updated Successfully.
+                    </p>
+                  </div>
+                </div>
+              </button>
+              <button ngbDropdownItem class="dropdown-item item-border py-1 notif-item pl-3">
+                <div class="d-flex align-items-center pr-3">
+                  <div class="mr-2">
+                    <div class="icon-circle bg-secondary">
+                      <i class="bx bx-money bx-xs text-white"></i>
+                    </div>
+                  </div>
+                  <div>
+                    <div class="d-flex align-items-center justify-content-between w-287">
+                      <h6 class="font-weight-md notification-label over-text mb-0">
+                        Account Reports
+                      </h6>
+                      <p class="small mb-0">
+                        <!-- {{ notification.createdDate | date: "mediumDate" }} -->
+                        13-10-2024
+                      </p>
+                    </div>
+                    <p class="notif-des over-text1 mb-0">
+                      Preparing accounting reports allows you to track your financial history, project future.
+                    </p>
+                  </div>
+                </div>
+              </button>
+              <button ngbDropdownItem class="dropdown-item item-border py-1 notif-item pl-3">
+                <div class="d-flex align-items-center pr-3">
+                  <div class="mr-2">
+                    <div class="icon-circle bg-secondary">
+                      <i class="bx bx-user bx-xs text-white"></i>
+                    </div>
+                  </div>
+                  <div>
+                    <div class="d-flex align-items-center justify-content-between w-287">
+                      <h6 class="font-weight-md notification-label over-text mb-0">
+                        User Management
+                      </h6>
+                      <p class="small mb-0">
+                        <!-- {{ notification.createdDate | date: "mediumDate" }} -->
+                        12-10-2024
+                      </p>
+                    </div>
+                    <p class="notif-des over-text1 mb-0">
+                      New User Added
+                    </p>
+                  </div>
+                </div>
+              </button>
+              <button ngbDropdownItem class="dropdown-item item-border py-1 notif-item pl-3">
+                <div class="d-flex align-items-center pr-3">
+                  <div class="mr-2">
+                    <div class="icon-circle bg-secondary">
+                      <i class="bx bx-line-chart bx-xs text-white"></i>
+                    </div>
+                  </div>
+                  <div>
+                    <div class="d-flex align-items-center justify-content-between w-287">
+                      <h6 class="font-weight-md notification-label over-text mb-0">
+                        Sales Reports
+                      </h6>
+                      <p class="small mb-0">
+                        <!-- {{ notification.createdDate | date: "mediumDate" }} -->
+                        09-10-2024
+                      </p>
+                    </div>
+                    <p class="notif-des over-text1 mb-0">
+                      Sales Data Updated Successfully.
+                    </p>
+                  </div>
+                </div>
+              </button>
+              <button ngbDropdownItem class="dropdown-item item-border py-1 notif-item pl-3">
+                <div class="d-flex align-items-center pr-3">
+                  <div class="mr-2">
+                    <div class="icon-circle bg-secondary">
+                      <i class="bx bx-money bx-xs text-white"></i>
+                    </div>
+                  </div>
+                  <div>
+                    <div class="d-flex align-items-center justify-content-between w-287">
+                      <h6 class="font-weight-md notification-label over-text mb-0">
+                        Account Reports
+                      </h6>
+                      <p class="small mb-0">
+                        <!-- {{ notification.createdDate | date: "mediumDate" }} -->
+                        27-09-2024
+                      </p>
+                    </div>
+                    <p class="notif-des over-text1 mb-0">
+                      Preparing accounting reports allows you to track your financial history, project future.
+                    </p>
+                  </div>
+                </div>
+              </button>
+            </div>
+            <button ngbDropdownItem class="notification-footer" routerLink="/notification" routerLinkActive="current">
+              <h6 class="font-md pt-2 pb-2">View all notifications</h6>
+            </button>
+            <!-- <button ngbDropdownItem><i class='bx bx-user mr-2 mb-3'></i>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt, pariatur.</button>
+              <button ngbDropdownItem><i class='bx bx-cog mr-2 mb-3'></i>Settings</button>
+              <button ngbDropdownItem><i class='bx bx-log-out-circle mr-2 mb-3'></i>Logout</button> -->
+          </div>
+        </div>
+        <div ngbDropdown class="d-inline-block profile-drop">
+          <button type="button" class="btn" id="dropdownBasic1" ngbDropdownToggle>
+            <span class="mr-2">Administrator</span>
+            <img src="../assets/img/profile-img.png">
+          </button>
+          <div ngbDropdownMenu aria-labelledby="dropdownBasic1" class="pro-drop p-3">
+            <button ngbDropdownItem><i class='bx bx-user mr-2 mb-2'></i>My Account</button>
+            <button ngbDropdownItem><i class='bx bx-cog mr-2 mb-2'></i>Settings</button>
+            <button ngbDropdownItem><i class='bx bx-log-out-circle mr-2 mb-2'></i>Logout</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="main-content-area p-3">
+      <router-outlet />
+    </div>
+  </div>
+</section>
