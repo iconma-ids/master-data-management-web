@@ -22,6 +22,11 @@ const routes: Routes = [
     loadChildren: () =>
       import('./modules/files/files.module').then((m) => m.FilesModule),
   }, 
+  {
+    path: 'masterdata',
+    loadChildren: () =>
+      import('./modules/masterdata/masterdata.module').then((m) => m.MasterdataModule),
+  }, 
 ];
 
 @NgModule({
