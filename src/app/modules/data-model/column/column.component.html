@@ -5,61 +5,9 @@
         <!--Page Header-->
         <div class="page-header border-bottom-dark">
             <!--row-->
-            <div class="d-flex align-items-center justify-content-between">
-                
-                    <h5 class="mb-0 border-bottom w-100 pb-1">COLUMN</h5>
-                <!--                            
-                    <div class="d-flex justify-content-end align-items-center py-1">
-                        
-                        <div class="form-group mr-3 mnwidth-68">
-                            <select class="form-control  mnwidth-34"  disabled>
-                                <option value="0">25</option>
-                                <option value="1">50</option>
-                                <option value="2">75</option>
-                            </select>
-                        </div>
-                        <div >
-                            <button type="button" class="btn btn-outline-dark mr-2 btn-rel btnExample btn-action" disabled>
-                            <img class="init_img" src="../../../../assets/img/dark-delete.svg" height="14">
-                            <img class="hover_img" src="../../../../assets/img/light-delete.svg" height="14"> 
-                            <span class="btn-abs">Delete</span>
-                            </button>
-                        </div>
-                        
-                        <button type="button" class="btn btn-outline-dark mr-2 btn-rel btnExample btn-action" disabled>
-                        <span class="btn-abs">Filter</span>
-                        <img class="init_img" src="../../../../assets/img/dark-filter.svg" height="13">
-                        <img class="hover_img" src="../../../../assets/img/light-filter.svg" height="13"> 
-                        </button>
-                        <button type="button" class="btn btn-outline-dark btnExample btn-action mr-2 btn-rel" disabled>
-                            <img class="init_img" src="../../../../assets/img/dark-clearfilter.svg" height="14">
-                            <img class="hover_img" src="../../../../assets/img/light-clearfilter.svg" height="14"> 
-                            <span class="btn-abs btn-abs-2x-long">Clear Filter</span>
-                        </button> 
-                        <button class="custom-file-upload btn btn-outline-dark mr-2 btn-rel btnExample btn-action" disabled> 
-                        <label >
-                        <input type="file" name="file" accept=".csv,.xlsx">
-                        <img class="init_img" src="../../../../assets/img/dark-export.svg" height="14">
-                        <img class="hover_img" src="../../../../assets/img/light-export.svg" height="14"> 
-                        <span class="btn-abs">Import</span>
-                        </label></button>
-                        <button type="button" class="btn btn-outline-dark mr-2 btn-rel btnExample btn-action" disabled>
-                        <img class="init_img" src="../../../../assets/img/dark-download.svg" height="14">
-                        <img class="hover_img" src="../../../../assets/img/light-download.svg" height="14"> 
-                        <span class="btn-abs">Export</span>
-                        </button> 
-                        <button type="button" class="btn btn-outline-dark mr-2 btn-rel btnExample btn-action" disabled>
-                        <img class="init_img" src="../../../../assets/img/dark-menu.svg" height="14">
-                        <img class="hover_img" src="../../../../assets/img/light-menu.svg" height="14"> 
-                        <span class="btn-abs btn-abs-2x-long">Column Selection</span>
-                        </button> 
-                        <button [routerLink]="['/config-setting/create']" class="btn btn-outline-dark btn-rel btnExample btn-action" type="submit" disabled>
-                        <img class="init_img" src="../assets/img/dark-add.svg" height="14">
-                        <img class="hover_img" src="../assets/img/light-add.svg" height="14">
-                        <span class="btn-abs">Create</span> 
-                        </button>
-                    </div> -->
-
+            <div class="d-flex align-items-center justify-content-between border-bottom w-100">
+                    <h5 class="mb-0 pb-1">COLUMN</h5>
+                    <app-filters></app-filters>
             </div>
             <!--End row-->
         </div>
