@@ -1,0 +1,309 @@
+<body class="sb-nav-fixed">
+
+    <!--Layout Sidenav Content-->
+    <section id="layoutSidenav_content">
+        <!--Main-->
+        <main class="content-padding1">
+            <!--Container Fluid-->
+            <div class="container-fluid">
+                <!--Page Content-->
+                <div class="page-content">
+                    <!--Page Header-->
+                    <div class="page-header border-bottom-dark">
+                        <!--row-->
+                        <div class="d-flex align-items-center justify-content-between">                      
+                                <h5 class="mb-0">Configuration</h5>
+
+
+                                <div class="d-flex justify-content-end align-items-center py-1">
+                                  <!-- <input class="form-control mr-3" type="search" placeholder="Search here" >  -->
+                                 <div class="form-group mr-3 mnwidth-68" >
+                                   <select class="form-control  mnwidth-34" disabled>
+                                        <option value="0">25</option>
+                                        <option value="1">50</option>
+                                        <option value="2">75</option>
+                                   </select>
+                                 </div>
+                                 <div *ngIf= "deleteFlag == true" >
+                                  <button type="button" class="btn btn-outline-dark mr-2 btn-rel" (click)="deleteConfiguration()">
+                                    <i class="fa fa-trash fa-lg" aria-hidden="true"></i>
+                                    <span class="btn-abs">Delete</span>
+                                  </button>
+                                </div>
+                               
+                                <button type="button" class="btn btn-outline-dark mr-2 btn-rel"(click)="open1(filter)">
+                                  <i class="fa fa-filter fa-lg" aria-hidden="true"></i>
+                                  <span class="btn-abs">Filter</span>
+                                </button>
+                                 <button type="button" class="btn btn-outline-dark mr-2 btn-rel filter-clr btnExample btn-action" disabled>
+                                   <img class="init_img" src="../../../../assets/img/dark-clearfilter.svg" height="14">
+                                   <img class="hover_img" src="../../../../assets/img/light-clearfilter.svg" height="14"> 
+                                   <span class="btn-abs btn-abs-xtr-long">Clear Filter</span>
+                                 </button> 
+                                 <button class="custom-file-upload btn btn-outline-dark mr-2 btn-rel btnExample btn-action" disabled> 
+                                  <label >
+                                  <input type="file" name="file" accept=".csv,.xlsx">
+                                  <img class="init_img" src="../../../../assets/img/dark-export.svg" height="14">
+                                  <img class="hover_img" src="../../../../assets/img/light-export.svg" height="14"> 
+                                  <span class="btn-abs">Import</span>
+                                 </label></button>
+                                 <button type="button" class="btn btn-outline-dark mr-2 btn-rel btnExample btn-action" disabled>
+                                   <img class="init_img" src="../../../../assets/img/dark-download.svg" height="14">
+                                   <img class="hover_img" src="../../../../assets/img/light-download.svg" height="14"> 
+                                   <span class="btn-abs">Export</span>
+                                 </button> 
+                                  <button type="button" class="btn btn-outline-dark mr-2 btn-rel btnExample btn-action" disabled>
+                                   <img class="init_img" src="../../../../assets/img/dark-menu.svg" height="14">
+                                   <img class="hover_img" src="../../../../assets/img/light-menu.svg" height="14"> 
+                                   <span class="btn-abs btn-abs-2x-long">Column Selection</span>
+                                 </button> 
+
+                                <button (click)="create()" class="btn btn-outline-dark btn-rel" type="submit">
+                                  <img class="init_img" src="../../../../assets/img/dark-add.svg" height="14">
+                                  <img class="hover_img" src="../../../../assets/img/light-add.svg" height="14">
+                                  <span class="btn-abs">Create</span>
+                                </button>
+                           </div>           
+                         
+                        </div>
+                        <!--End row-->
+                    </div>
+                    <!--End Page Header-->
+
+                    <div class="blog-post">
+                      <form name="editForm" [formGroup]="editForm" enctype="multipart/form-data">
+                        <div class="row mb-2 mt-3">
+                         <div class="d-flex align-items-center col-lg-3 col-md-3">
+                          <label for="field_clientName" class="mb-2 w-25">Client Name</label>
+                          <select class="form-control " formControlName="clientName">
+                              <option [ngValue]="null" disabled> Select Client Name</option>
+                              <option
+                                  [ngValue]="clientName"
+                                  *ngFor="let clientName of clientNameList">{{clientName}}
+                              </option>
+                          </select> 
+                         </div>
+                       
+
+                       <div class="d-flex align-items-center col-lg-3 col-md-3">
+                        <label for="field_ui" class="mb-2 w-25">App Name</label>
+                        <select class="form-control " formControlName="app" (change)="selectAppName()">
+                            <option [ngValue]="null" disabled> Select App</option>
+                            <option
+                                [ngValue]="app"
+                                *ngFor="let app of applicationList">{{app}}
+                            </option>
+                        </select> 
+                       </div>
+
+                       <div class="d-flex align-items-center col-lg-3 col-md-3">
+                        <label for="field_ui" class="mb-2 w-10">Ui</label>
+                        <select class="form-control " formControlName="ui">
+                            <option [ngValue]="null" disabled> Select ui</option>
+                            <option
+                                [ngValue]="ui"
+                                *ngFor="let ui of uiList">{{ui}}
+                            </option>
+                        </select> 
+                       </div>
+                       <div class="d-flex align-items-center col-lg-3 col-md-3">
+                        
+                          <button class="btn mr-2 adv-scrh-btn" (click)="getDataByClientNameAndAppAndUi()"><img src="../assets/img/magnifier.png" height="22"></button>
+                       </div>
+                  </div>
+                </form>
+                        <div class="table-responsive">
+                           
+                              <!--grid using mat-->
+                        <table mat-table [dataSource]="configurationList" multiTemplateDataRows class="mt-2" matSort (matSortChange)="announceSortChange($event)">
+                            
+                            <ng-container matColumnDef="checkbox">
+                              <th style="width:25px;padding-top: 3px;" mat-header-cell *matHeaderCellDef class="head-view  text-center pl-0"> <input type="checkbox" (change)="checkAllConfigurations($event)"></th>
+                              <td style="width:25px;padding-top: 3px;" mat-cell *matCellDef="let element" class="text-center"> <input type="checkbox" [checked]="element.isSelected" (change)="selectConfiguration($event,element.id)"></td>
+                            </ng-container>
+                            <ng-container matColumnDef="action">
+                                <th style="width:45px;" mat-header-cell *matHeaderCellDef class="head-view"> Action </th>
+                                <td style="width:45px;" mat-cell *matCellDef="let element" class="" >  
+                                  <div ngbDropdown class="d-inline-block">
+                                    <button type="button" class="btn bg-c" id="dropdownBasic1" ngbDropdownToggle><i class="fa fa-cog" aria-hidden="true"></i></button>
+                                    <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                                      <button ngbDropdownItem (click) ="view(element.id)"
+                                      class="btn  btn-xs tableicon bluclr " data-title="Edit" data-toggle="modal"
+                                      data-target="#edit"><i class="fa fa-eye color-dark"
+                                      aria-hidden="true"></i> View </button>
+                                  <button ngbDropdownItem (click) ="edit(element.id)"
+                                      class="btn btn-xs tableicon bluclr " data-title="Edit" data-toggle="modal"
+                                      data-target="#edit"><i class="fa fa-edit color-dark"
+                                      aria-hidden="true"></i> Edit </button>
+                                  <button ngbDropdownItem class="btn btn-xs tableicon bluclr " data-title="Edit"
+                                      data-toggle="modal" data-target="#edit" (click)="delete(element)"><i class="fa fa-trash  color-dark"
+                                      aria-hidden="true"></i> Delete </button>
+                                    </div>
+                                  </div>
+                               
+    
+                                  </td>
+    
+    
+    
+                              </ng-container>
+                            
+                            <ng-container matColumnDef="columnName">
+                              <th mat-header-cell *matHeaderCellDef class="head-view" mat-sort-header sortActionDescription="Sort by columnName"> Column Name </th>
+                              <td mat-cell *matCellDef="let element" class="" > {{element.columnName}} </td>
+                            </ng-container>
+
+                            <ng-container matColumnDef="columnType">
+                                <th mat-header-cell *matHeaderCellDef class="head-view" mat-sort-header sortActionDescription="Sort by columnType"> Column Type </th>
+                                <td mat-cell *matCellDef="let element" class="" > {{element.columnType}} </td>
+                              </ng-container>
+
+                              <ng-container matColumnDef="columnAlias">
+                                <th mat-header-cell *matHeaderCellDef class="head-view" mat-sort-header sortActionDescription="Sort by columnAlias"> Column Alias </th>
+                                <td mat-cell *matCellDef="let element" class="" > {{element.columnAlias}} </td>
+                              </ng-container>
+
+                              <ng-container matColumnDef="foreignKeyColumn">
+                                <th mat-header-cell *matHeaderCellDef class="head-view" mat-sort-header sortActionDescription="Sort by foreignKeyColumn">Foreign Key Column  </th>
+                                <td mat-cell *matCellDef="let element" class="" > {{element.foreignKeyColumn}} </td>
+                              </ng-container>
+
+                              <ng-container matColumnDef="foreignKeyTable">
+                                <th mat-header-cell *matHeaderCellDef class="head-view" mat-sort-header sortActionDescription="Sort by foreignKeyTable">Foreign Key Table  </th>
+                                <td mat-cell *matCellDef="let element" class="" > {{element.foreignKeyTable}} </td>
+                              </ng-container>
+
+                              <ng-container matColumnDef="foreignKeySchema">
+                                <th mat-header-cell *matHeaderCellDef class="head-view" mat-sort-header sortActionDescription="Sort by foreignKeySchema">Foreign Key Schema  </th>
+                                <td mat-cell *matCellDef="let element" class="" > {{element.foreignKeySchema}} </td>
+                              </ng-container>
+
+                              <ng-container matColumnDef="columnOrder">
+                                <th mat-header-cell *matHeaderCellDef class="head-view" mat-sort-header sortActionDescription="Sort by columnOrder"> Column Order </th>
+                                <td mat-cell *matCellDef="let element" class="" > {{element.columnOrder}} </td>
+                              </ng-container>
+
+                              <ng-container matColumnDef="requiredField">
+                                <th mat-header-cell *matHeaderCellDef class="head-view" mat-sort-header sortActionDescription="Sort by requiredField"> Required Field </th>
+                                <td mat-cell *matCellDef="let element" class="" > {{element.requiredField}} </td>
+                              </ng-container>
+
+                              <ng-container matColumnDef="uniqueValue">
+                                <th mat-header-cell *matHeaderCellDef class="head-view" mat-sort-header sortActionDescription="Sort by uniqueValue"> Unique Value </th>
+                                <td mat-cell *matCellDef="let element" class="" > {{element.uniqueValue}} </td>
+                              </ng-container>
+
+                              <ng-container matColumnDef="display">
+                                <th mat-header-cell *matHeaderCellDef class="head-view" mat-sort-header sortActionDescription="Sort by display"> Display </th>
+                                <td mat-cell *matCellDef="let element" class="" > {{element.display}} </td>
+                              </ng-container>
+
+                              <ng-container matColumnDef="schemaName">
+                                <th mat-header-cell *matHeaderCellDef class="head-view" mat-sort-header sortActionDescription="Sort by schemaName">Schema Name</th>
+                                <td mat-cell *matCellDef="let element" class="" > {{element.schemaName}} </td>
+                              </ng-container>
+
+                              <ng-container matColumnDef="clientName">
+                                <th mat-header-cell *matHeaderCellDef class="head-view" mat-sort-header sortActionDescription="Sort by clientName">Client Name</th>
+                                <td mat-cell *matCellDef="let element" class="" > {{element.clientName}} </td>
+                              </ng-container>
+
+                              <ng-container matColumnDef="tableName">
+                                <th mat-header-cell *matHeaderCellDef class="head-view" mat-sort-header sortActionDescription="Sort by tableName">Table Name</th>
+                                <td mat-cell *matCellDef="let element" class="" > {{element.tableName}} </td>
+                              </ng-container>
+
+                              <ng-container matColumnDef="regularExpression">
+                                <th mat-header-cell *matHeaderCellDef class="head-view" mat-sort-header sortActionDescription="Sort by regularExpression">Regular Expression</th>
+                                <td mat-cell *matCellDef="let element" class="" > {{element.regularExpression}} </td>
+                              </ng-container>
+
+                              <ng-container matColumnDef="app">
+                                <th mat-header-cell *matHeaderCellDef class="head-view" mat-sort-header sortActionDescription="Sort by app">App</th>
+                                <td mat-cell *matCellDef="let element" class="" > {{element.app}} </td>
+                              </ng-container>
+
+                              <ng-container matColumnDef="ui">
+                                <th mat-header-cell *matHeaderCellDef class="head-view" mat-sort-header sortActionDescription="Sort by ui">Ui</th>
+                                <td mat-cell *matCellDef="let element" class="" > {{element.ui}} </td>
+                              </ng-container>
+
+                              <ng-container matColumnDef="compositKey">
+                                <th mat-header-cell *matHeaderCellDef class="head-view" mat-sort-header sortActionDescription="Sort by compositKey">Composit Key</th>
+                                <td mat-cell *matCellDef="let element" class="" > {{element.compositKey}} </td>
+                              </ng-container>
+
+                              <ng-container matColumnDef="description">
+                                <th mat-header-cell *matHeaderCellDef class="head-view" mat-sort-header sortActionDescription="Sort by description">Description</th>
+                                <td mat-cell *matCellDef="let element" class="" > {{element.description}} </td>
+                              </ng-container>
+                             
+                            <!-- Template for details row -->
+                            <ng-container matColumnDef="expandedDetail">
+                              <td mat-cell *matCellDef="let element" [attr.colspan]="displayedConfigurationColumnsList.length">
+                                <div class="row student-element-detail" [@detailExpand]="element.isExpanded ? 'expanded' : 'collapsed'"></div>
+                              </td>
+                            </ng-container>
+                        
+                        
+                            <tr mat-header-row *matHeaderRowDef="displayedConfigurationColumnsList;sticky: true"></tr>
+                            <tr mat-row *matRowDef="let element; columns: displayedConfigurationColumnsList;" class="student-element-row"
+                              [class.student-expanded-row]="element.isExpanded"></tr>
+                        
+                            <!-- Extra row to show detail content column -->
+                            <!-- <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="student-detail-row"></tr> -->
+                        
+                          </table>
+                        </div>
+                        <div *ngIf="configurations && configurations.length > 0" class="mt-3">
+                            <div class="d-flex justify-content-end">
+                                <ngb-pagination class="d-flex justify-content-end" [collectionSize]="totalItems" [(page)]="ngbPaginationPage"
+                                    [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true"
+                                    (pageChange)="loadPage($event)"></ngb-pagination>
+                            </div>
+                        </div>
+                        <div class="clearfix"></div>
+
+                       
+
+
+                    </div>
+                    <!--End Page Content-->
+
+                </div>
+                <!-- End DataTales Start -->
+
+            </div>
+            <!--End ontainer Fluid-->
+        </main>
+        <!--End Main-->
+
+    </section>
+    <!--End Layout Sidenav Content-->
+
+</body>
+<ng-template #filter let-modal>
+  <div class="modal-header py-2">
+    <h4 class="modal-title mb-0" id="modal-basic-title">Filter</h4>
+    <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+  </div>
+  <div class="modal-body">
+
+    <form [formGroup]="filterForm">
+    <div class="row" >
+      <div class="col-lg-4 col-md-6 col-sm-12" *ngFor="let column of configurationData">
+        <div class="form-group mb-2" >
+          <label for="market" class="mb-2" >{{column | titlecase}}</label>
+          <input type="text" class="form-control" [formControlName]=column>
+      </div>
+      
+      </div>
+       
+    </div>
+  </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-dark" (click)="filterConfiguration();modal.close('Save click')">Apply</button>
+
+  </div>
+</ng-template>
