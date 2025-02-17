@@ -21,7 +21,12 @@ const routes: Routes = [
     path: 'file-explorer',
     loadChildren: () =>
       import('./modules/files/files.module').then((m) => m.FilesModule),
-  }, 
+  },
+  {
+    path: 'column_management',
+    loadChildren: () =>
+      import('./modules/column-configuration/column-configuration.module').then((m) => m.ColumnConfigurationModule),
+  },
 ];
 
 @NgModule({

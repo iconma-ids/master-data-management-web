@@ -50,7 +50,6 @@
                 "src/assets/customjs/custom.js"
             ],
             "server": "src/main.server.ts",
-            "outputMode": "server",
             "ssr": {
               "entry": "src/server.ts"
             }
@@ -81,6 +80,11 @@
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "buildTarget": "master-data-management-web:build",
+            "proxyConfig": "src/proxy-local.conf.json",
+            "port": 4100
+          },
           "configurations": {
             "production": {
               "buildTarget": "master-data-management-web:build:production"
@@ -118,5 +122,8 @@
         }
       }
     }
+  },
+  "cli": {
+    "analytics": false
   }
 }

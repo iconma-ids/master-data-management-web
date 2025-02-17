@@ -1,0 +1,33 @@
+{
+
+    "/api/configuration-admin/*": {
+      "target": "http://localhost:9091",
+      "secure": false,
+      "logLevel": "debug",
+      "changeOrigin": true,
+      "pathRewrite": {
+        "^/api/configuration-admin/": "/configuration-admin/api/"
+      }
+    },
+    "/api/config/*": {
+      "target": "http://localhost:9091",
+      "secure": false,
+      "logLevel": "debug",
+      "changeOrigin": true,
+      "pathRewrite": {
+        "^/api/config/": "/config/api/"
+      }
+    },
+    "/api/authentication/*": {
+      "target": "http://localhost:9091",
+      "secure": false,
+      "logLevel": "debug",
+      "changeOrigin": true,
+      "pathRewrite": {
+        "^/api/authentication/": "/authentication/api/"
+      }
+    }
+  
+  
+  }
+  
