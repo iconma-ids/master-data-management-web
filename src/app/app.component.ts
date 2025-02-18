@@ -1,7 +1,8 @@
 import { DOCUMENT } from '@angular/common';
 import { HttpResponse } from '@angular/common/http';
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, Inject, OnInit, PLATFORM_ID } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { isPlatformBrowser } from '@angular/common';
 import { LocalStorageService, SessionStorageService } from 'ngx-webstorage';
 import { AppEventManager } from './shared/service/app-event-manager';
 @Component({
@@ -26,10 +27,10 @@ urlArray :any;
 url:any;
 applicationName:any;
 elementid: any;
-
+isBrowser: boolean;
   constructor(
     @Inject(DOCUMENT) private document: Document,
-    private router: Router,
+    @Inject(PLATFORM_ID) private platformId: object,
     protected localStorageService: LocalStorageService,
     protected appEventManager: AppEventManager,
     private activatedRoute: ActivatedRoute,
@@ -39,9 +40,11 @@ elementid: any;
     private localStorage: LocalStorageService,
     private sessionStorage: SessionStorageService,
    
-  ) { }
+  ) { debugger;
+    this.isBrowser = isPlatformBrowser(this.platformId);  // Check if running in browser
+  }
 
-  ngOnInit(): void {
+  ngOnInit(): void {debugger;
     this.pathName=window.location.pathname;
 this.urlArray = this.pathName.split('/');
 //if(this.urlArray[6] !== 'undefined' || this.urlArray[6] == 'list'){
@@ -88,7 +91,7 @@ this.menuData = JSON.parse(this.menuData);
    let jwt=params['token'];
    this.appName=params['appName']==undefined?"ADMINISTRATION":params['appName'];
    let clientName = params['clientName']==undefined?"ICONMA":params['clientName'];
-      localStorage.setItem("token", jwt);
+      localStorage.setItem("token", jwt);debugger;
       this.$localStorage.store('authenticationToken', jwt);
       this.$sessionStorage.store('authenticationToken', jwt);
       if(jwt == undefined){

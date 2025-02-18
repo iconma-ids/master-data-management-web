@@ -39,9 +39,12 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatTreeModule } from '@angular/material/tree';
-import { provideHttpClient } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule, provideHttpClient, withFetch } from '@angular/common/http';
 import { BrowserModule, provideClientHydration } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { LocalStorageService, provideNgxWebstorage, SessionStorageService, withLocalStorage, withNgxWebstorageConfig, withSessionStorage } from 'ngx-webstorage';
+import { AuthInterceptor } from './blocks/interceptor/auth.interceptor';
+import { RecruitersSharedModule } from './shared/shared.module';
 
 
 
@@ -55,8 +58,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     AppRoutingModule,
     BrowserAnimationsModule,
     NgbModule,
-    // HttpClientModule,
-    // RecruitersSharedModule,
+     HttpClientModule,
+     RecruitersSharedModule,
     MatAutocompleteModule,
     MatBadgeModule,
     MatBottomSheetModule,
@@ -96,10 +99,32 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     MatFormFieldModule,
     MatInputModule,
     MatRippleModule,
+    
   ],
-  providers: [provideHttpClient(),
-    //provideAnimationsAsync()
+  providers: [
+   // provideHttpClient(),
+   provideHttpClient(withFetch()),
+
+   {
+    provide: HTTP_INTERCEPTORS,
+    useClass: AuthInterceptor,
+    multi: true,
+  },
+
+    provideNgxWebstorage(
+		
+      withNgxWebstorageConfig({
+        prefix: '', // Disable the default 'ngx-webstorage|' prefix
+        separator: ':', // Keep your custom separator
+        caseSensitive: true
+      }),
+			withLocalStorage(),
+			withSessionStorage()
+		)
   ],
+    //provideAnimationsAsync()  
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
+

@@ -15,7 +15,7 @@ import { ColumnConfigurationDeleteDialogComponent } from './column-configuration
  import { ListComponent } from './list/list.component';
  import { CreateComponent } from './create/create.component';
 import { AngularEditorModule } from '@kolkov/angular-editor';
-import { provideHttpClient } from '@angular/common/http';
+import { HttpClientModule, provideHttpClient  } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -27,10 +27,10 @@ import { provideHttpClient } from '@angular/common/http';
     CommonModule,
     ColumnConfigurationRoutingModule,
     MatTableModule,MatListModule,MatButtonModule,  MatSelectModule, NgbModule, 
-      MatCheckboxModule,MatSortModule, MatInputModule,ReactiveFormsModule,
+      MatCheckboxModule,MatSortModule, MatInputModule,ReactiveFormsModule,HttpClientModule,
       AngularEditorModule 
   ],
   providers: [provideHttpClient()]
-  //entryComponents: [ColumnConfigurationDeleteDialogComponent],
+ 
 })
 export class ColumnConfigurationModule { }

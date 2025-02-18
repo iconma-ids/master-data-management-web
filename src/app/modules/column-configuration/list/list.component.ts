@@ -215,30 +215,40 @@ filterForm:FormGroup;
     this.registerChangeInCompanies();
     this.formSubscribe();
     this.filterConfiguration();
-    this.appName='ADMINISTRATION';
-    this.clientNam ='ICONMA';
-    this.tableNam = 'column_management';
-    this.schama_name = 'iplexr_conf';
-    this.schemaNam = 'iplexr_conf';
-    // this.appName = this.activatedRoute.snapshot.params['appName'];
-    // this.clientNam = this.activatedRoute.snapshot.params['clientName'];
-    // this.tableNam = this.activatedRoute.snapshot.params['tableName'];
-    // this.schama_name=localStorage.getItem('schama_name')||"";
-    // this.schemaNam=localStorage.getItem('schemaName')||"";
+    // this.appName='ADMINISTRATION';
+    // this.clientNam ='ICONMA';
+    // this.tableNam = 'column_management';
+    // this.schama_name = 'iplexr_conf';
+    // this.schemaNam = 'iplexr_conf';
+    this.appName = this.activatedRoute.snapshot.params['appName'];
+    this.clientNam = this.activatedRoute.snapshot.params['clientName'];
+    this.tableNam = this.activatedRoute.snapshot.params['tableName'];
+    this.schama_name=localStorage.getItem('schama_name')||"";
+    this.schemaNam=localStorage.getItem('schemaName')||"";
 
-    this.columnConfigurationService.getClientNameList().subscribe((res : HttpResponse<any>) => {debugger;
-      const data = res.body
-     this.clientNameList = data;
+    // this.columnConfigurationService.getClientNameList().subscribe((res : any) => {debugger;
+    //   const data = res.body
+    //  this.clientNameList = data;
+    // });
+
+    this.columnConfigurationService.getApplicationList().subscribe({
+      next: (data) => {
+        console.log('API Response:', data);
+        this.applicationList = data;
+      },
+      error: (error) => {
+        console.error('API Error:', error);
+      }
     });
 
-    this.columnConfigurationService.getApplicationList().subscribe((res : HttpResponse<any>) => {debugger;
-      const data = res.body
-     this.applicationList = data;
-    });
-    this.columnConfigurationService.getUiList().subscribe((res : HttpResponse<any>) => {debugger;
-      const data = res.body
-     this.uiList = data;
-    });
+    // this.columnConfigurationService.getApplicationList().subscribe((res : any) => {debugger;
+    //   const data = res.body
+    //  this.applicationList = data;
+    // });
+    // this.columnConfigurationService.getUiList().subscribe((res : HttpResponse<any[]>) => {debugger;
+    //   const data = res.body
+    //  this.uiList = data;
+    // });
   }
 
   protected handleNavigation(): void {debugger;
@@ -309,7 +319,7 @@ debugger;
           sort: this.predicate + ',' + (this.ascending ? 'asc' : 'desc'),
         },
       });
-    }
+    }debugger;
     this.configurations = data || [];
     this.configurations.forEach((containerType:any,index:any)=>{
       this.configurations![index].isExpanded=false;
