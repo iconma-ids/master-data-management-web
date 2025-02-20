@@ -226,29 +226,29 @@ filterForm:FormGroup;
     this.schama_name=localStorage.getItem('schama_name')||"";
     this.schemaNam=localStorage.getItem('schemaName')||"";
 
-    // this.columnConfigurationService.getClientNameList().subscribe((res : any) => {debugger;
-    //   const data = res.body
-    //  this.clientNameList = data;
-    // });
-
-    this.columnConfigurationService.getApplicationList().subscribe({
-      next: (data) => {
-        console.log('API Response:', data);
-        this.applicationList = data;
-      },
-      error: (error) => {
-        console.error('API Error:', error);
-      }
+    this.columnConfigurationService.getClientNameList().subscribe((res : any) => {debugger;
+      const data = res.body
+     this.clientNameList = data;
     });
 
-    // this.columnConfigurationService.getApplicationList().subscribe((res : any) => {debugger;
-    //   const data = res.body
-    //  this.applicationList = data;
+    // this.columnConfigurationService.getApplicationList().subscribe({
+    //   next: (data) => {
+    //     console.log('API Response:', data);
+    //     this.applicationList = data;
+    //   },
+    //   error: (error) => {
+    //     console.error('API Error:', error);
+    //   }
     // });
-    // this.columnConfigurationService.getUiList().subscribe((res : HttpResponse<any[]>) => {debugger;
-    //   const data = res.body
-    //  this.uiList = data;
-    // });
+
+    this.columnConfigurationService.getApplicationList().subscribe((res : any) => {debugger;
+      const data = res.body
+     this.applicationList = data;
+    });
+    this.columnConfigurationService.getUiList().subscribe((res : HttpResponse<any[]>) => {debugger;
+      const data = res.body
+     this.uiList = data;
+    });
   }
 
   protected handleNavigation(): void {debugger;
@@ -267,9 +267,9 @@ filterForm:FormGroup;
   }
 
   open1(filter: any) {
-    this.modalService.open(filter, { size: 'xl' }).result.then((result) => {
+    this.modalService.open(filter, { size: 'xl' }).result.then((result: any) => {
       this.closeResult = `Closed with: ${result}`;
-    }, (reason) => {
+    }, (reason: any) => {
       this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
     });
   }
