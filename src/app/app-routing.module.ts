@@ -27,6 +27,12 @@ const routes: Routes = [
     loadChildren: () =>
       import('./modules/masterdata/masterdata.module').then((m) => m.MasterdataModule),
   }, 
+
+  {
+    path: 'column_management',
+    loadChildren: () =>
+      import('./modules/column-configuration/column-configuration.module').then((m) => m.ColumnConfigurationModule),
+  },
 ];
 
 @NgModule({

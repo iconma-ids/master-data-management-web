@@ -1,0 +1,23 @@
+<form  name="deleteForm" >
+    <div class="modal-header">
+        <h4 class="modal-title">Confirm delete operation</h4>
+
+        <button type="button" class="close btn btn-outline-dark" data-dismiss="modal" aria-hidden="true"
+                (click)="cancel()">&times;</button>
+    </div>
+
+    <div class="modal-body">
+
+        <p id="delete-columnConfiguration-heading"  >Are you sure you want to delete this columnConfiguration?</p>
+    </div>
+
+    <div class="modal-footer">
+        <button type="button" class="btn btn-outline-dark" data-dismiss="modal" (click)="cancel()">
+            <span >Cancel</span>
+        </button>
+
+        <button id="confirm-delete-columnConfiguration" type="submit" class="btn btn-dark" (click)="confirmDelete(columnConfiguration)">
+            <span >Delete</span>
+        </button>
+    </div>
+</form>

@@ -1,0 +1,403 @@
+<body class="sb-nav-fixed">
+
+    <!--End Navbar-->
+
+
+    <!--Layout Sidenav Content-->
+    <section id="layoutSidenav_content">
+        <!--Main-->
+        <main class="content-padding1">
+            <!--Container Fluid-->
+            <div class="container-fluid">
+                <!--Page Content-->
+                <div class="page-content">
+                    <!--Page Header-->
+                    <div class="page-header border-bottom-dark">
+
+                        <h5 class="mb-0">Column Configuration</h5>
+
+                        <!--End row-->
+                    </div>
+                    <!--End Page Header-->
+
+                    <div class="blog-post mt-2">
+                        <form name="editForm" (ngSubmit)="save()" [formGroup]="editForm" enctype="multipart/form-data">
+                            <div class="row  loginsrn">
+
+                                <div class="col-12 col-sm-12 col-md-6 col-lg-4">
+                                    <!-- Form Group -->
+                                    <div class="form-group mb-2">
+                                        <label for="field_clientName" class="mb-2">Client Name</label>
+                                        <select class="form-control " formControlName="clientName">
+                                            <option [ngValue]="null" disabled> Select Client Name</option>
+                                            <option
+                                                [ngValue]="clientName"
+                                                *ngFor="let clientName of clientNameList">{{clientName}}
+                                            </option>
+                                        </select> 
+                                    </div>
+                                    <div class="form-group mb-2">
+                                        <label for="field_schemaName" class="mb-2">Schema Name</label>
+                                        <select class="form-control " formControlName="schemaName"  (change)="selectSchemaName()">
+                                            <option [ngValue]="null" disabled> Select Schema Name </option>
+                                            <option
+                                                [ngValue]="schemaName"
+                                                *ngFor="let schemaName of schamaNameList">{{schemaName}}
+                                            </option>
+                                        </select>   
+                                    </div>
+
+                                    <div class="form-group mb-2">
+                                        <label for="field_columnAlias" class="mb-2">Column Alias</label>
+                                        <input [(ngModel)]="selected" type="text" class="form-control " id="field_columnAlias"
+                                            placeholder="Column Alias" name="columnAlias" formControlName="columnAlias" >    
+                                    </div>
+                                   
+                                    
+                                    <div class="form-group mb-2" >
+                                        <label class="mb-2">Unique Value</label>
+                                        <select class="form-control " name="uniqueValue" formControlName="uniqueValue" [(ngModel)]="selectedUnique">
+                                            <option value= null>Select Unique</option>
+                                            <option value="Yes">Yes</option>
+                                            <option value="No">No</option>
+                                        </select>
+                                       
+                                    </div>
+                                    <div class="form-group mb-2">
+                                        <label for="field_columnType" class="mb-2">Data Type</label>
+                                            <select class="form-control " formControlName="columnType"  (change)="selectDataType()">
+                                                <option [ngValue]="null" disabled> Select Data Type </option>
+                                                <option
+                                                    [ngValue]="columnType"
+                                                    *ngFor="let columnType of dataTypeList">{{columnType}}
+                                                </option>
+                                            </select>    
+                                    </div>
+                                    <div class="form-group mb-2" *ngIf="update">
+                                        <label class="mb-2">Active</label>
+                                        <select class="form-control " name="active" formControlName="active">
+                                            <option value="Yes">Yes</option>
+                                            <option value="No">No</option>
+                                        </select>
+                                    </div>
+                                    <!-- Form Group -->
+                                   
+                                    <!-- Form Group -->
+                                   
+                                </div>
+                                <div class="col-12 col-sm-12 col-md-6 col-lg-4">
+                                    <div class="form-group mb-2">
+                                        <label for="field_app" class="mb-2">App</label>
+                                            <select class="form-control " formControlName="app">
+                                                <option [ngValue]="null" disabled> Select App</option>
+                                                <option
+                                                    [ngValue]="app"
+                                                    *ngFor="let app of applicationList">{{app}}
+                                                </option>
+                                            </select> 
+                                    </div>
+                                    <div class="form-group mb-2">
+                                        <label for="field_tableName" class="mb-2">Table Name</label>
+                                        <select class="form-control " formControlName="tableName"  (change)="selectTableName()">
+                                            <option [ngValue]="null" disabled> Select Table Name </option>
+                                            <option
+                                                [ngValue]="tableName"
+                                                *ngFor="let tableName of tableNameList">{{tableName}}
+                                            </option>
+                                        </select>   
+                                    </div>
+                                    <div class="form-group mb-2">
+                                        <label for="field_columnOrder" class="mb-2">Column Order</label>
+                                        <input type="text" class="form-control " id="field_columnOrder"
+                                            placeholder="Column Order" name="columnOrder" formControlName="columnOrder" >    
+                                    </div>
+                                  
+                                    <div class="form-group mb-2" >
+                                        <label class="mb-2">Display</label>
+                                        <select class="form-control " name="display" formControlName="display">
+                                            <option value= null>Select Display</option>
+                                            <option value="Yes">Yes</option>
+                                            <option value="No">No</option>
+                                        </select>
+                                       
+                                    </div>
+                                    <div class="form-group mb-2" >
+                                        <label class="mb-2">Composit Key</label>
+                                        <select class="form-control " name="active" formControlName="compositKey">
+                                            <option value="No">No</option>
+                                            <option value="Yes">Yes</option>
+                                        </select>
+                                    </div>
+                                   
+                                    
+                                </div>
+                                <div class="col-12 col-sm-12 col-md-6 col-lg-4">
+                                    <div class="form-group mb-2">
+                                        <label for="field_ui" class="mb-2">Ui</label>
+                                        <input type="text" class="form-control " id="field_ui"
+                                        placeholder="Ui" name="ui" formControlName="ui" >
+                                    </div>
+                                    <div class="form-group mb-2">
+                                        <label for="field_columnName" class="mb-2">Column Name</label>
+                                        <select class="form-control " formControlName="columnName" (change)="selectColumn()">
+                                            <option [ngValue]="null" disabled> Select Column Name </option>
+                                            <option
+                                                [ngValue]="columnName"
+                                                *ngFor="let columnName of columnNameList">{{columnName}}
+                                            </option>
+                                            <option *ngIf= "updateNewColumnFlag == true" >New Column Name</option>
+                                        </select> 
+                                        <div *ngIf= "newColumnFlag == true"> 
+                                        <input type="text" class="form-control " id="field_columnName"
+                                             name="columnName" formControlName="columnName" (change)="onChange($event)">  
+                                        </div> 
+                                    </div>
+                                    <div class="form-group mb-2" >
+                                        <label class="mb-2">Required Field</label>
+                                        <select class="form-control " name="requiredField" formControlName="requiredField" (change)="selectRequiredTrue()">
+                                            <option value= null>Select Required</option>
+                                            <option value="Yes">Yes</option>
+                                            <option value="No">No</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group mb-2">
+                                        <label for="field_regularExpression" class="mb-2">Regular Expression</label>
+                                        <input type="text" class="form-control " id="field_regularExpression"
+                                            placeholder="Regular Expression" name="regularExpression" formControlName="regularExpression" >    
+                                    </div>
+                                    <div class="form-group mb-2">
+                                        <label for="field_columnOrder" class="mb-2">Description</label>  
+                                        <angular-editor [placeholder]="'Enter text here...'" formControlName="description"></angular-editor>
+                                            <!-- <textarea class="form-control " id="field_description"
+                                            placeholder="Description" name="description" formControlName="description"></textarea>   -->
+                                    </div>
+                                    <!-- <angular-editor [placeholder]="'Enter text here...'" formControlName="description"></angular-editor> -->
+                                </div>
+
+
+                            </div>
+                            <div class="mt-2" *ngIf="lookupFlag == true">
+                                <fieldset>
+                                    <legend>LookUp Column</legend>
+                                    <div class="row  loginsrn mt-2">
+                                    <div class="col-12 col-sm-12 col-md-6 col-lg-4">
+                                        <div class="form-group mb-2">
+                                            <label for="field_foreignKeySchema" class="mb-2">LookUp Schema</label>
+                                            <select class="form-control " formControlName="foreignKeySchema" (change)="selectForeignKeySchemaName()">
+                                                <option [ngValue]="null" disabled> Select Schema Name </option>
+                                                <option
+                                                    [ngValue]="foreignKeySchema"
+                                                    *ngFor="let foreignKeySchema of schamaNameList">{{foreignKeySchema}}
+                                                </option>
+                                            </select>    
+                                        </div>
+                                        
+                                    </div>
+                                    <div class="col-12 col-sm-12 col-md-6 col-lg-4">
+                                        <div class="form-group mb-2">
+                                            <label for="field_foreignKeyTable" class="mb-2">LookUp Table</label>
+                                            <select class="form-control " formControlName="foreignKeyTable"  (change)="selectForeignKeyTableName()">
+                                                <option [ngValue]="null" disabled> Select Table Name </option>
+                                                <option
+                                                    [ngValue]="foreignKeyTable"
+                                                    *ngFor="let foreignKeyTable of foreignKeyTableNameList">{{foreignKeyTable}}
+                                                </option>
+                                            </select>      
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-sm-12 col-md-6 col-lg-4">
+                                        <div class="form-group mb-2">
+                                            <label for="field_foreignKeyColumn" class="mb-2">LookUp Column</label>
+                                            <div class="d-flex align-items-center">
+                                                <select class="form-control " formControlName="foreignKeyColumn">
+                                                    <option [ngValue]="null" disabled> Select Column Name </option>
+                                                    <option
+                                                        [ngValue]="foreignKeyColumn"
+                                                        *ngFor="let foreignKeyColumn of foreignKeyColumnNameList">{{foreignKeyColumn}}
+                                                    </option>
+                                                </select>  
+                                                <div class="ml-2">
+                                                    <input type="checkbox" class="form-control" (change)="selectCondition($event)" [checked]="conditionFlag">
+                                                </div>       
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+                                  
+                                    
+                        </div>
+                        <div class="mt-2" *ngIf="conditionFlag == true">
+                                      
+                            <div class="row  loginsrn mt-2">
+                                <div class="col-12 col-sm-12 col-md-6 col-lg-4">
+                                    <div class="form-group mb-2">
+                                        <label for="field_foreignKeySchema" class="mb-2">Select Column</label>
+                                        <select class="form-control " formControlName="foreignKeyColumn" (change)="selectForeignKeyColumnName()">
+                                            <option [ngValue]="null" disabled> Select Column Name </option>
+                                            <option
+                                                [ngValue]="foreignKeyColumn"
+                                                *ngFor="let foreignKeyColumn of foreignKeyColumnNameList">{{foreignKeyColumn}}
+                                            </option>
+                                        </select>  
+                                    </div>
+                                    
+                                </div>
+                                <div class="col-12 col-sm-12 col-md-6 col-lg-4">
+                                    <div class="form-group mb-2">
+                                        <label for="field_foreignKeySchema" class="mb-2">Select Condition</label>
+                                        <select class="form-control " formControlName="condition">
+                                        <option [ngValue]="null" disabled> Select Schema Name </option>
+                                          <option value = "=">Equal</option>
+                                          <option value = "!=">Not Equal</option>
+                                </select>   
+                                    </div>
+                                </div>
+                                <div class="col-12 col-sm-12 col-md-6 col-lg-4">
+                                    <div class="form-group mb-2">
+                                        <label for="field_foreignKeyValue" class="mb-2">Select value</label>
+                                        <select class="form-control " formControlName="foreignKeyValue">
+                                            <option [ngValue]="null" disabled> Select Value </option>
+                                            <option
+                                                [ngValue]="foreignKeyValue"
+                                                *ngFor="let foreignKeyValue of foreignKeyValuesList">{{foreignKeyValue}}
+                                            </option>
+                                        </select>  
+                                    </div>
+                                </div>
+                                </div>
+                           
+                        </div>
+                                </fieldset>
+                            </div>
+                            <div class="mt-2" *ngIf="dependentFlag == true">
+                                <fieldset>
+                                    <legend>Dependent Column</legend>
+                                    <div class="row  loginsrn mt-2">
+                                    <div class="col-12 col-sm-12 col-md-6 col-lg-4">
+                                        <div class="form-group mb-2">
+                                            <label for="field_foreignKeySchema" class="mb-2">Dependent Schema</label>
+                                            <select class="form-control " formControlName="foreignKeySchema" (change)="selectForeignKeySchemaName()">
+                                                <option [ngValue]="null" disabled> Select Schema Name </option>
+                                                <option
+                                                    [ngValue]="foreignKeySchema"
+                                                    *ngFor="let foreignKeySchema of schamaNameList">{{foreignKeySchema}}
+                                                </option>
+                                            </select>    
+                                        </div>
+                                        
+                                    </div>
+                                    <div class="col-12 col-sm-12 col-md-6 col-lg-4">
+                                        <div class="form-group mb-2">
+                                            <label for="field_foreignKeyTable" class="mb-2">Dependent Table</label>
+                                            <select class="form-control " formControlName="foreignKeyTable"  (change)="selectForeignKeyTableName()">
+                                                <option [ngValue]="null" disabled> Select Table Name </option>
+                                                <option
+                                                    [ngValue]="foreignKeyTable"
+                                                    *ngFor="let foreignKeyTable of foreignKeyTableNameList">{{foreignKeyTable}}
+                                                </option>
+                                            </select>      
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-sm-12 col-md-6 col-lg-4">
+                                        <div class="form-group mb-2">
+                                            <label for="field_foreignKeyColumn" class="mb-2">LookUp Column</label>
+                                            <div class="d-flex align-items-center">
+                                                <select class="form-control " formControlName="foreignKeyColumn">
+                                                    <option [ngValue]="null" disabled> Select Column Name </option>
+                                                    <option
+                                                        [ngValue]="foreignKeyColumn"
+                                                        *ngFor="let foreignKeyColumn of foreignKeyColumnNameList">{{foreignKeyColumn}}
+                                                    </option>
+                                                </select>  
+                                                <div class="ml-2">
+                                                    <input type="checkbox" class="form-control" (change)="selectCondition($event)" [checked]="conditionFlag">
+                                                </div>       
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+                                  
+                                    
+                        </div>
+                        <div class="mt-2" *ngIf="conditionFlag == true">
+                                      
+                            <div class="row  loginsrn mt-2">
+                                <div class="col-12 col-sm-12 col-md-6 col-lg-4">
+                                    <div class="form-group mb-2">
+                                        <label for="field_foreignKeySchema" class="mb-2">Select Column</label>
+                                        <select class="form-control " formControlName="foreignKeyColumn" (change)="selectForeignKeyColumnName()">
+                                            <option [ngValue]="null" disabled> Select Column Name </option>
+                                            <option
+                                                [ngValue]="foreignKeyColumn"
+                                                *ngFor="let foreignKeyColumn of foreignKeyColumnNameList">{{foreignKeyColumn}}
+                                            </option>
+                                        </select>  
+                                    </div>
+                                    
+                                </div>
+                                <div class="col-12 col-sm-12 col-md-6 col-lg-4">
+                                    <div class="form-group mb-2">
+                                        <label for="field_foreignKeySchema" class="mb-2">Select Condition</label>
+                                        <select class="form-control " formControlName="condition">
+                                        <option [ngValue]="null" disabled> Select Schema Name </option>
+                                          <option value = "=">Equal</option>
+                                          <option value = "!=">Not Equal</option>
+                                </select>   
+                                    </div>
+                                </div>
+                                <div class="col-12 col-sm-12 col-md-6 col-lg-4">
+                                    <div class="form-group mb-2">
+                                        <label for="field_foreignKeyValue" class="mb-2">Select value</label>
+                                        <select class="form-control " formControlName="foreignKeyValue">
+                                            <option [ngValue]="null" disabled> Select Value </option>
+                                            <option
+                                                [ngValue]="foreignKeyValue"
+                                                *ngFor="let foreignKeyValue of foreignKeyValuesList">{{foreignKeyValue}}
+                                            </option>
+                                        </select>  
+                                    </div>
+                                </div>
+                                </div>
+                           
+                        </div>
+                                </fieldset>
+                               
+                            </div>
+                            <div class="pull-right mt-4">
+                               
+                                <button type="button" id="cancel-save" class="btn btn-outline-dark mr-4"
+                                    (click)="previousState()">
+                                    <i class="fa fa-arrow-left mr-2" aria-hidden="true"></i>
+                                    <span>Cancel</span>
+                                </button>
+                                <button type="submit" id="save-entity" [disabled]="editForm.invalid "
+                                    class="btn btn-dark">
+                                    <i class="fa fa-floppy-o mr-2" aria-hidden="true"></i>
+                                    <span>Save</span>
+                                </button>
+
+                            </div>
+                        </form>
+                        <div class="clearfix"></div>
+
+
+
+
+                    </div>
+                    <!--End Page Content-->
+
+                </div>
+                <!-- End DataTales Start -->
+
+            </div>
+            <!--End ontainer Fluid-->
+        </main>
+        <!--End Main-->
+
+    </section>
+    <!--End Layout Sidenav Content-->
+
+</body>
+
+
+
