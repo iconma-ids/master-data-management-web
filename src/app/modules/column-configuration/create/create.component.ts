@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { ColumnConfigurationService } from '../column-configuration.service';
-import { FormBuilder, FormsModule, Validators } from '@angular/forms';
+import { FormArray, FormBuilder, FormsModule, Validators } from '@angular/forms';
 import { IColumnConfiguration, ColumnConfiguration } from '../../../shared/shared/column-configuration.model';
 
 @Component({
@@ -13,6 +13,8 @@ import { IColumnConfiguration, ColumnConfiguration } from '../../../shared/share
   standalone: false,
 })
 export class CreateComponent implements OnInit {
+  dataTypeLists = ['Boolean','Date','Date and Time','Decimal','Email Address','Integer','Real','Text','URL','Text Upper','Text Lower','User Name'];
+
   selected:any;
   selectedUnique:any;
   dropdownList: any = [];
@@ -53,25 +55,27 @@ export class CreateComponent implements OnInit {
     this.editForm = this.fb.group({
     id: [],
     //columnType: ['', Validators.required],
-    columnName: [''],
+    clientName:[''],
     schemaName: [''],
+    app:[''],
     tableName: [''],
-    columnDisplayName: [''],
     tableDisplayName: [''],
-    primaryName: [''],
+    tableEditable:[''],
+    customTableFlag: [''],
+    systemTableFlag: [''],
+    uiEnable: [''],
+    columnName: [''],
+    columnDisplayName: [''],
+    primaryKey: [''],
+    minValue: [''],
+    maxValue: [''],
     dataType: [''],
     size: [''],
     precision: [''],
-    validValueList: [''],
-    minValue: [''],
-    maxValue: [''],
-    defaultValue: [false],
-    systemTableFlag: [false],
-    customTableFlag: [false],
-    uiEnable: [false],
-    columnEtiable: [false],
-    tableEtiable:[false],
-    allowNullFlag: [false],
+    validValueList:[''],
+    allowNullFlag: [''],
+    defaultValue: [''],
+    columnEtiable: [''],
 
     //mandatory: [false],
     // columnOrder: [null],
@@ -104,6 +108,10 @@ export class CreateComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.editForm = this.fb.group({
+      columns: this.fb.array([])
+    });
+
     this.selectedUnique = null;
     this.columnConfigurationService.getSchemaNameList().subscribe((res : HttpResponse<any>) => {debugger;
       const data = res.body
@@ -126,6 +134,8 @@ export class CreateComponent implements OnInit {
     this.activatedRoute.data.subscribe(({ columnConfiguration }) => {
       this.updateForm(columnConfiguration);
     });
+
+  
  
   }
 
@@ -171,7 +181,6 @@ export class CreateComponent implements OnInit {
       columnName:this.editForm.get(["columnName"])!.value,
       schemaName:this.editForm.get(["schemaName"])!.value,
       tableName:this.editForm.get(["tableName"])!.value,
-      primaryName:this.editForm.get(["primaryName"])!.value,
       dataType:this.editForm.get(["dataType"])!.value,
       columnDisplayName: this.editForm.get(["columnDisplayName"])!.value,
       tableDisplayName: this.editForm.get(["tableDisplayName"])!.value,
@@ -180,6 +189,7 @@ export class CreateComponent implements OnInit {
       validValueList:this.editForm.get(["validValueList"])!.value,
       minValue:this.editForm.get(["minValue"])!.value,
       maxValue:this.editForm.get(["maxValue"])!.value,
+      primaryKey:this.editForm.get(["primaryKey"])!.value== "Yes" ? true : false,
       defaultValue:this.editForm.get(["defaultValue"])!.value == "Yes" ? true : false,
       tableEditable:this.editForm.get(["tableEditable"])!.value == "Yes" ? true : false,
       columnEditable:this.editForm.get(["columnEditable"])!.value == "Yes" ? true : false,
@@ -374,5 +384,36 @@ if(event.target.checked == true){
   protected onSaveError(): void {
     // this.isSaving = false;
   }
+
+  get columns(): FormArray {
+    return this.editForm.get('columns') as FormArray;
+  }
+
+  addColumn(){
+    const columnGroup = this.fb.group({
+      columnName: [''],
+      columnDisplayName: [''],
+      dataType: [''],
+      primaryKey: [''],
+      size: [null],
+      precision: [null],
+      minValue: [null],
+      maxValue: [null],
+      validValueList: [''],
+      allowNullFlag: [''],
+      defaultValue: [''],
+      columnEtiable: [''],
+    });
+    this.columns.push(columnGroup);
+  }
+
+  removeColumn(index:any){
+    this.columns.removeAt(index);
+  }
+
+ 
+
   
 }
+
+

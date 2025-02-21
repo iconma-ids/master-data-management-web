@@ -1,29 +1,28 @@
 import { BlobOptions } from "buffer";
 
 export interface IColumnConfiguration {
-    id?:number;
-    //clientName?:string;
-    columnName?:string;
-    //columnType?:string;
-    schemaName?:string;
-    tableName?:string;
-    columnDisplayName?:string;
-    tableDisplayName?:string;
-    dataType?:string;
-    primaryName?:string;
-    size?:string;
-    precision?:string;
-    validValueList?:string;
-    minValue?:string;
-    maxValue?:string;
-    tableEditable?:boolean;
-    columnEditable?:boolean;
-    defaultValue?:boolean;
-    // display?:boolean;
-    systemTableFlag?:boolean;
-    customTableFlag?:boolean;
-    uiEnable?:boolean;
-    allowNullFlag?:boolean;
+     id?:number;
+     clientName?:string;
+     schemaName?:string;
+     app?:string;
+     tableName?:string;
+     tableDisplayName?:string;
+     tableEditable?:boolean;
+     customTableFlag?:boolean;
+     systemTableFlag?:boolean;
+     uiEnable?:boolean;
+     columnName?:string;
+     columnDisplayName?:string;
+     primaryKey?:boolean;
+     minValue?:string;
+     maxValue?:string;
+     dataType?:string;
+     size?:string;
+     precision?:string;
+     validValueList?:string;
+     allowNullFlag?:boolean;
+     defaultValue?:boolean;
+     columnEditable?:boolean;
 
     
     
@@ -54,30 +53,30 @@ export class ColumnConfiguration implements IColumnConfiguration {
 
     constructor(
     public id?:number,
-
-    //public clientName?:string,
-    public columnName?:string,
-    //public columnType?:string,
+    public clientName?:string,
     public schemaName?:string,
+    public app?:string,
     public tableName?:string,
-    public displayName?:string,
+    public tableDisplayName?:string,
+    public tableEditable?:boolean,
+    public customTableFlag?:boolean,
+    public systemTableFlag?:boolean,
+    public uiEnable?:boolean,
+    public columnName?:string,
+    public columnDisplayName?:string,
+    public primaryKey?:boolean,
+    public minValue?:string,
+    public maxValue?:string,
     public dataType?:string,
-    public primaryName?:string,
     public size?:string,
     public precision?:string,
     public validValueList?:string,
-    public minValue?:string,
-    public maxValue?:string,
-    public tableEditable?:boolean,
-    public columnEditable?:boolean,
+    public allowNullFlag?:boolean,
     public defaultValue?:boolean,
-    public systemTableFlag?:boolean,
-    public customTableFlag?:boolean,
-    public uiEnable?:boolean,
-    public allowNullFlag?:boolean
+    public columnEditable?:boolean,
 
 
-    // public columnOrder?:number,
+   // public columnOrder?:number,
     // public clientName?:string,
     // public columnName?:string,
     // public columnType?:string,

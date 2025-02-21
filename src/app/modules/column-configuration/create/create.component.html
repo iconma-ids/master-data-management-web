@@ -1,269 +1,227 @@
 <body class="sb-nav-fixed">
-
-    <!--End Navbar-->
-
-
-    <!--Layout Sidenav Content-->
     <section id="layoutSidenav_content">
-        <!--Main-->
         <main class="content-padding1">
-            <!--Container Fluid-->
             <div class="container-fluid">
-                <!--Page Content-->
                 <div class="page-content">
-                    <!--Page Header-->
                     <div class="page-header border-bottom-dark">
-
                         <h5 class="mb-0">Column Configuration</h5>
-
-                        <!--End row-->
                     </div>
-                    <!--End Page Header-->
-
                     <div class="blog-post mt-2">
                         <form name="editForm" (ngSubmit)="save()" [formGroup]="editForm" enctype="multipart/form-data">
-                            
-                            <!-- Row 1 -->
-                            <div class="row loginsrn">
-                                <div class="col-md-4">
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <div class="form-group mb-2">
+                                        <label class="mb-2">Client Name</label>
+                                        <select class="form-control" formControlName="clientName">
+                                            <option [ngValue]="null" disabled>Select Client Name</option>
+                                            <option *ngFor="let clientName of clientNameList" [ngValue]="clientName">{{ clientName }}</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
                                     <div class="form-group mb-2">
                                         <label class="mb-2">Schema Name</label>
-                                        <select class="form-control" formControlName="schemaName">
+                                        <select class="form-control" formControlName="schemaName" (change)="selectSchemaName()">
                                             <option [ngValue]="null" disabled>Select Schema Name</option>
-                                            <option *ngFor="let schemaName of schamaNameList" [ngValue]="schemaName">
-                                                {{ schemaName }}
-                                            </option>
                                         </select>
                                     </div>
                                 </div>
-                                <div class="col-md-4">
+                                <div class="col-sm-4">
                                     <div class="form-group mb-2">
-                                        <label class="mb-2">Table Name</label>
-                                        <select class="form-control" formControlName="tableName">
-                                            <option [ngValue]="null" disabled>Select Table Name</option>
-                                            <option *ngFor="let tableName of tableNameList" [ngValue]="tableName">
-                                                {{ tableName }}
-                                            </option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="form-group mb-2">
-                                        <label class="mb-2">Column Name</label>
-                                        <select class="form-control" formControlName="columnName">
-                                            <option [ngValue]="null" disabled>Select Column Name</option>
-                                            <option *ngFor="let columnName of columnNameList" [ngValue]="columnName">
-                                                {{ columnName }}
-                                            </option>
-                                            <option *ngIf="updateNewColumnFlag">New Column Name</option>
+                                        <label class="mb-2">App Name</label>
+                                        <select class="form-control" formControlName="app">
+                                            <option [ngValue]="null" disabled>Select App Name</option>
+                                            <option *ngFor="let app of applicationList" [ngValue]="app">{{ app }}</option>
                                         </select>
                                     </div>
                                 </div>
                             </div>
-
-                            <!-- Row 2 -->
                             <div class="row">
-                                <div class="col-md-4">
+                                <div class="col-sm-4">
                                     <div class="form-group mb-2">
-                                        <label class="mb-2">Column Display Name</label>
-                                        <input type="text" class="form-control" placeholder="Column Display Name" formControlName="columnDisplayName">
+                                        <label class="mb-2">Table Name</label>
+                                        <select class="form-control" formControlName="tableName">
+                                            <option [ngValue]="null" disabled>Select Table Name</option>
+                                            <option *ngFor="let tableName of tableNameList" [ngValue]="tableName">{{ tableName }}</option>
+                                        </select>
                                     </div>
                                 </div>
-
-                                <div class="col-md-4">
+                                <div class="col-sm-4">
                                     <div class="form-group mb-2">
                                         <label class="mb-2">Table Display Name</label>
                                         <input type="text" class="form-control" placeholder="Table Display Name" formControlName="tableDisplayName">
                                     </div>
                                 </div>
-
-                                <div class="col-md-4">
-                                    <div class="form-group mb-2">
-                                        <label class="mb-2">Data Type</label>
-                                        <input type="text" class="form-control" placeholder="Data Type" formControlName="dataType">
+                                <div class="col-sm-4">
+                                    <div class="form-group ">
+                                        <label class="mb-2">Table Editable</label>
+                                        <select class="form-control" formControlName="tableEditable">
+                                            <option value="" disabled>Select Table Editable</option>
+                                            <option value="true">True</option>
+                                            <option value="false">False</option>
+                                        </select>
                                     </div>
                                 </div>
                             </div>
-
-                            <!-- Row 3 -->
                             <div class="row">
-                                <div class="col-md-4">
+                                <div class="col-sm-4">
                                     <div class="form-group mb-2">
-                                        <label class="mb-2">Primary Key</label>
-                                        <input type="text" class="form-control" placeholder="Primary Key" formControlName="primaryKey">
+                                        <label class="mb-2">Custom Table Flag</label>
+                                        <select class="form-control" formControlName="customTableFlag">
+                                            <option value="" disabled>Select Custom Table Flag</option>
+                                            <option value="true">True</option>
+                                            <option value="false">False</option>
+                                        </select>
                                     </div>
                                 </div>
-                                <div class="col-md-4">
+                                <div class="col-sm-4">
                                     <div class="form-group mb-2">
-                                        <label class="mb-2">Size</label>
-                                        <input type="text" class="form-control" placeholder="Size" formControlName="size">
+                                        <label class="mb-2">System Table Flag</label>
+                                        <select class="form-control" formControlName="systemTableFlag">
+                                            <option value="" disabled>Select System Table Flag</option>
+                                            <option value="true">True</option>
+                                            <option value="false">False</option>
+                                        </select>
                                     </div>
                                 </div>
-                                <div class="col-md-4">
+                                <div class="col-sm-4">
                                     <div class="form-group mb-2">
-                                        <label class="mb-2">Precision</label>
-                                        <input type="text" class="form-control" placeholder="Precision" formControlName="precision">
+                                        <label class="mb-2">UI Enable</label>
+                                        <select class="form-control" formControlName="uiEnable">
+                                            <option value="" disabled>Select UI Enable</option>
+                                            <option value="true">True</option>
+                                            <option value="false">False</option>
+                                        </select>
                                     </div>
                                 </div>
                             </div>
-
-                            <!-- Row 4 -->
+                          
                             <div class="row">
-                                <div class="col-md-4">
-                                    <div class="form-group mb-2">
-                                        <label class="mb-2">Min Value</label>
-                                        <input type="text" class="form-control" placeholder="Min Value" formControlName="minValue">
+                                <div class="col-12 d-flex justify-content-end mb-2">
+                                    <button type="button" class="btn btn-success" (click)="addColumn()">+</button>
+                                </div>
+                            </div>
+                            <div formArrayName="columns">
+                                <fieldset class="p-4 mb-3" *ngFor="let column of columns.controls; let i = index" [formGroupName]="i">
+                                    <legend>Column Data {{ i + 1 }}</legend>
+                                    <div class="row">
+                                        <div class="col-sm-4">
+                                            <div class="form-group mb-2">
+                                                <label>Column Name</label>
+                                                <select class="form-control" formControlName="columnName">
+                                                    <option [ngValue]="null" disabled>Select Column Name</option>
+                                                    <option *ngFor="let columnName of columnNameList" [ngValue]="columnName">{{ columnName }}</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <div class="form-group mb-2">
+                                                <label>Column Display Name</label>
+                                                <input type="text" class="form-control" formControlName="columnDisplayName">
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <div class="form-group mb-2">
+                                                <label>Primary Key</label>
+                                                <select class="form-control" formControlName="primaryKey">
+                                                    <option value="" disabled>Select Primary Key</option>
+                                                    <option value="true">True</option>
+                                                    <option value="false">False</option>
+                                                </select>
+                                            </div>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="form-group mb-2">
-                                        <label class="mb-2">Max Value</label>
-                                        <input type="text" class="form-control" placeholder="Max Value" formControlName="maxValue">
+                                    <div class="row">
+                                      
+                                        <div class="col-sm-4">
+                                            <div class="form-group mb-2">
+                                                <label>Min Value</label>
+                                                <input type="number" class="form-control" formControlName="minValue">
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <div class="form-group mb-2">
+                                                <label>Max Value</label>
+                                                <input type="number" class="form-control" formControlName="maxValue">
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <div class="form-group mb-2">
+                                                <label>Data Type</label>
+                                                <select class="form-control" formControlName="dataType">
+                                                    <option [ngValue]="null" disabled>Select Data Type</option>
+                                                    <option *ngFor="let dataType of dataTypeLists" [ngValue]="dataType">{{ dataType }}</option>
+                                                </select>
+                                            </div>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="form-group mb-2">
-                                        <label class="mb-2">Default</label>
-                                        <input type="text" class="form-control" placeholder="Default Value" formControlName="defaultValue">
+                                    <div class = "row">
+                                        <div class="col-sm-4">
+                                            <div class="form-group mb-2">
+                                                <label>Size</label>
+                                                <input type="number" class="form-control" formControlName="size">
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <div class="form-group mb-2">
+                                                <label>Precision</label>
+                                                <input type="number" class="form-control" formControlName="precision">
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <div class="form-group mb-2">
+                                                <label>Valid Value List</label>
+                                                <input type="text" class="form-control" formControlName="validValueList">
+                                            </div>
+                                        </div>
                                     </div>
-                                </div>
-                            </div>
-
-                            <!-- Row 6 - Checkbox Alignment in Two Rows -->
-                            <div class="row align-items-center">
-                                <div class="col-md-4">
-                                    <div class="form-group mb-2">
-                                    <label class="mb-2">Valid Value List</label>
-                                    <input type="text" class="form-control" placeholder="Valid Value List" formControlName="validValueList">
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="form-group form-check">
-                                    <input type="checkbox" class="form-check-input" id="systemTableFlag" formControlName="systemTableFlag">
-                                    <label class="form-check-label" for="systemTableFlag">System Table Flag</label>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="form-group form-check">
-                                <input type="checkbox" class="form-check-input" id="customTableFlag" formControlName="customTableFlag">
-                                <label class="form-check-label" for="customTableFlag">Custom Table Flag</label>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="row align-items-center mt-2">
-                        <div class="col-md-4">
-                            <div class="form-group form-check">
-                            <input type="checkbox" class="form-check-input" id="uiEnable" formControlName="uiEnable">
-                            <label class="form-check-label" >UI Enable</label>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="form-group form-check">
-                                <input type="checkbox" class="form-check-input" id="allowNullFlag" formControlName="allowNullFlag">
-                                <label class="form-check-label" >Allow Null Flag</label>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="form-group form-check">
-                                <input type="checkbox" class="form-check-input"  formControlName="columnEditable">
-                                <label class="form-check-label" >Column Editable</label>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="row align-items-center mt-2">
-                        <div class="col-md-4">
-                            <div class="form-group form-check">
-                                <input type="checkbox" class="form-check-input"  formControlName="tableEditable">
-                                <label class="form-check-label" >Table Editable</label>
-                            </div>
-                        </div>
-                    </div>
-    
-                            <!-- <div class="row">
-                                <div class="col-md-4">
-                                    <div class="form-group mb-2">
-                                        <label class="mb-2">Primary Name</label>
-                                        <input type="text" class="form-control" placeholder="Primary Name" formControlName="primaryName">
+                                    <div class="row">
+                                        <div class="col-sm-4">
+                                            <div class="form-group mb-2">
+                                                <label>Allow Null Flag</label>
+                                                <select class="form-control" formControlName="allowNullFlag">
+                                                    <option value="" disabled>Select Allow Null Flag</option>
+                                                    <option value="true">True</option>
+                                                    <option value="false">False</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <div class="form-group mb-2">
+                                                <label>Default Value</label>
+                                                <input type="text" class="form-control" formControlName="defaultValue">
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <div class="form-group ">
+                                                <label class="mb-2">Column Editable</label>
+                                                <select class="form-control" formControlName="columnEtiable">
+                                                    <option value="" disabled>Select Column Editable</option>
+                                                    <option value="true">True</option>
+                                                    <option value="false">False</option>
+                                                </select>
+                                            </div>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-md-4 mt-3">
-                                    <div class="form-group">
-                                        <label class="mb-0">
-                                            <input type="checkbox" formControlName="systemTableFlag">System Table Flag
-                                        </label>
+                                    <div class="col-lg-12 d-flex justify-content-end mt-2">
+                                        <button type="button" class="btn btn-danger" (click)="removeColumn(i)">-</button>
                                     </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="form-group mb-2">
-                                        <label class="mb-2">
-                                            <input type="checkbox" formControlName="customTableFlag"> Custom Table Flag
-                                        </label>
-                                    </div>
-                                </div>
+                                </fieldset>
                                 
                             </div>
-                           
-                            <div class="row">
-                                <div class="col-md-4">
-                                    <div class="form-group mb-2">
-                                        <label class="mb-2">
-                                            <input type="checkbox" formControlName="uiEnable"> UI Enable
-                                        </label>
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="form-group mb-2">
-                                        <label class="mb-2">
-                                            <input type="checkbox" formControlName="allowNullFlag"> Allow Null Flag
-                                        </label>
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="form-group mb-2">
-                                        <label class="mb-2">
-                                            <input type="checkbox" formControlName="editable"> Editable
-                                        </label>
-                                    </div>
-                                </div>
-                            </div> -->
-                            
-
-                            <!-- Submit Button -->
                             <div class="pull-right mt-4">
-                               
-                                <button type="button" id="cancel-save" class="btn btn-outline-dark mr-4"
-                                    (click)="previousState()">
-                                    <i class="fa fa-arrow-left mr-2" aria-hidden="true"></i>
+                                <button type="button" class="btn btn-outline-dark mr-4" (click)="previousState()">
                                     <span>Cancel</span>
                                 </button>
-                                <button type="submit" id="save-entity" [disabled]="editForm.invalid "
-                                    class="btn btn-dark">
-                                    <i class="fa fa-floppy-o mr-2" aria-hidden="true"></i>
+                                <button type="submit" [disabled]="editForm.invalid" class="btn btn-dark">
                                     <span>Save</span>
                                 </button>
-
                             </div>
                         </form>
-                        <div class="clearfix"></div>
-
-
-
-
                     </div>
-                    <!--End Page Content-->
-
                 </div>
-                <!-- End DataTales Start -->
-
             </div>
-            <!--End ontainer Fluid-->
         </main>
-        <!--End Main-->
-
     </section>
-    <!--End Layout Sidenav Content-->
-
 </body>
 
