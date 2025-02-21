@@ -48,68 +48,64 @@ import { RecruitersSharedModule } from './shared/shared.module';
 
 
 
-@NgModule({ declarations: [
-        AppComponent,
-    ],
-    //provideAnimationsAsync()  
-    bootstrap: [AppComponent], imports: [BrowserModule,
-        AppRoutingModule,
-        BrowserAnimationsModule,
-        NgbModule,
-        RecruitersSharedModule,
-        MatAutocompleteModule,
-        MatBadgeModule,
-        MatBottomSheetModule,
-        MatButtonModule,
-        MatButtonToggleModule,
-        MatCardModule,
-        MatCheckboxModule,
-        MatChipsModule,
-        MatStepperModule,
-        MatDatepickerModule,
-        MatDialogModule,
-        MatDividerModule,
-        MatExpansionModule,
-        MatGridListModule,
-        MatIconModule,
-        MatInputModule,
-        MatListModule,
-        MatMenuModule,
-        MatNativeDateModule,
-        MatPaginatorModule,
-        MatProgressBarModule,
-        MatProgressSpinnerModule,
-        MatRadioModule,
-        MatRippleModule,
-        MatSelectModule,
-        MatSidenavModule,
-        MatSliderModule,
-        MatSlideToggleModule,
-        MatSnackBarModule,
-        MatSortModule,
-        MatTableModule,
-        MatTabsModule,
-        MatToolbarModule,
-        MatTooltipModule,
-        MatTreeModule,
-        MatButtonModule,
-        MatFormFieldModule,
-        MatInputModule,
-        MatRippleModule], providers: [
-        // provideHttpClient(),
-        provideHttpClient(withFetch()),
-        {
-            provide: HTTP_INTERCEPTORS,
-            useClass: AuthInterceptor,
-            multi: true,
-        },
-        provideNgxWebstorage(withNgxWebstorageConfig({
-            prefix: '', // Disable the default 'ngx-webstorage|' prefix
-            separator: ':', // Keep your custom separator
-            caseSensitive: true
-        }), withLocalStorage(), withSessionStorage()),
-        provideHttpClient(withInterceptorsFromDi())
-    ] })
+
+@NgModule({
+  declarations: [
+    AppComponent,
+    
+  ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    NgbModule,
+    // HttpClientModule,
+    // RecruitersSharedModule,
+    MatAutocompleteModule,
+    MatBadgeModule,
+    MatBottomSheetModule,
+    MatButtonModule,
+    MatButtonToggleModule,
+    MatCardModule,
+    MatCheckboxModule,
+    MatChipsModule,
+    MatStepperModule,
+    MatDatepickerModule,
+    MatDialogModule,
+    MatDividerModule,
+    MatExpansionModule,
+    MatGridListModule,
+    MatIconModule,
+    MatInputModule,
+    MatListModule,
+    MatMenuModule,
+    MatNativeDateModule,
+    MatPaginatorModule,
+    MatProgressBarModule,
+    MatProgressSpinnerModule,
+    MatRadioModule,
+    MatRippleModule,
+    MatSelectModule,
+    MatSidenavModule,
+    MatSliderModule,
+    MatSlideToggleModule,
+    MatSnackBarModule,
+    MatSortModule,
+    MatTableModule,
+    MatTabsModule,
+    MatToolbarModule,
+    MatTooltipModule,
+    MatTreeModule,
+    MatButtonModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatRippleModule,
+  ],
+  providers: [provideHttpClient(),
+    //provideAnimationsAsync()
+  ],
+  bootstrap: [AppComponent]
+})
 export class AppModule { }
 
 

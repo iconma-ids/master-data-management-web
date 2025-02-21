@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 import { DataModelRoutingModule } from './data-model-routing.module';
 import { TableComponent } from './table/table.component';
 import { ColumnComponent } from './column/column.component';
-
+import { SharedModule } from '../../shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -13,7 +13,7 @@ import { ColumnComponent } from './column/column.component';
   ],
   imports: [
     CommonModule,
-    DataModelRoutingModule
+    DataModelRoutingModule,SharedModule
   ]
 })
 export class DataModelModule { }

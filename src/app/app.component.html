@@ -1,9 +1,12 @@
 <div class="sidebar close">
-  <div class="logo-details d-flex justify-content-center" *ngIf="showLogo1 == true">
+  <!-- <div class="logo-details d-flex justify-content-center" *ngIf="showLogo1 == true">
     <img src="../assets/img/config-fav.png" height="36">
   </div>
   <div class="logo-details d-flex justify-content-center" *ngIf="showLogo2 == true">
     <img src="../assets/img/config-fav.png" height="42">
+  </div> -->
+  <div class="logo-details d-flex justify-content-center">
+    <i class='bx bx-menu' (click)="togglemenu()"></i>
   </div>
   <ul class="nav-links">
     <li>
@@ -42,7 +45,7 @@
       <ul class="sub-menu">
         <li><a [routerLink]="['/UseCaseThree']"><i class='bx bx-store ic-class'></i>Market</a></li>
         <li><a [routerLink]="['/UseCaseThree']"><i class='bx bx-vertical-center ic-class'></i>Channel</a></li>
-        <li><a [routerLink]="['/UseCaseThree']"><i class='bx bx-package ic-class'></i>Product</a></li>
+        <li><a [routerLink]="['/masterdata']"><i class='bx bx-package ic-class'></i>Product</a></li>
         <li><a [routerLink]="['/UseCaseThree']"><i class='bx bx-current-location ic-class'></i>Location</a></li>
         <li><a [routerLink]="['/UseCaseThree']"><i class='bx bx-box ic-class'></i>Sourcing</a></li>
         <li><a [routerLink]="['/UseCaseThree']"><i class='bx bx-detail ic-class'></i>BOM</a></li>
@@ -93,12 +96,19 @@
 
     <div class="dashboard-nav p-3 px-4 d-flex align-items-center justify-content-between">
       <div class="nav-left d-flex align-items-center">
-        <i class='bx bx-menu' (click)="togglemenu()"></i>
-        <div class="nav-search-section ml-3">
+        <!-- <i class='bx bx-menu' (click)="togglemenu()"></i> -->
+         <h5>MDM</h5>
+        <!-- <div class="nav-search-section ml-3">
           <input type="search" class="form-control p-2" placeholder="Search Here">
-        </div>
+        </div> -->
       </div>
       <div class="nav-right">
+        <button class="btn relative notif px-3 mr-1" [routerLink]="['help']">
+          <img src="../assets/img/help.svg" height="20" />
+        </button>
+        <button class="btn relative notif px-3">
+          <img src="../assets/img/menudark.svg" height="16" />
+        </button>
         <div ngbDropdown class="d-inline-block profile-drop" display="dynamic">
           <button type="button" class="btn notification-button" id="dropdownBasic1" ngbDropdownToggle>
             <!-- <img src="../assets/img/no" class="notification-bell"> -->

@@ -1,0 +1,373 @@
+<div class="d-flex justify-content-end align-items-center py-1 pb-2">
+    <!-- <input class="form-control mr-3" type="search" placeholder="Search here" > -->
+    <!-- <div class="form-group mr-3 mnwidth-68">
+    <input type="text" class="form-control" [(ngModel)]="this.totalItems"/> 
+    </div> -->
+    <div class="form-group mr-3 mnwidth-68">
+        <select class="form-control  mnwidth-34">
+            <option value="0">Select</option>
+            <option value="1">Opt 1</option>
+            <option value="2">Opt 2</option>
+            <option value="3">Opt 3</option>
+       </select>
+    </div>
+
+    <div>
+    <button type="button" class="btn btn-outline-dark btn-action mr-2 btnExample btn-rel">
+        <img class="init_img" src="../../../../assets/img/location_validate-01.svg" height="16">
+        <img class="hover_img" src="../../../../assets/img/location_validate-02.svg" height="14">
+        <span class="btn-abs">Validate</span>
+    </button>
+    </div>
+
+    <div>
+    <button type="button" class="btn btn-outline-dark btn-action mr-2 btnExample btn-rel">
+        <img class="init_img" src="../../../../assets/img/dark-delete.svg" height="14">
+        <img class="hover_img" src="../../../../assets/img/light-delete.svg" height="14">
+        <span class="btn-abs">Delete</span>
+    </button>
+    </div>
+
+    <button type="button" class="btn btn-outline-dark btnExample mr-2 btn-rel btn-action" (click)="open7(content7)">
+        <img class="init_img" src="../../../../assets/img/dark-filter.svg" height="14">
+        <img class="hover_img" src="../../../../assets/img/light-filter.svg" height="14">
+        <span class="btn-abs">Filter</span>
+    </button>
+    <button type="button" class="btn btn-outline-dark mr-2 btnExample btn-rel btn-action">
+        <!-- <img src="../assets/img/clear filter-01.svg" height="13"> -->
+        <img class="init_img" src="../../../../assets/img/dark-clearfilter.svg" height="14">
+        <img class="hover_img" src="../../../../assets/img/light-clearfilter.svg" height="14">
+        <span class="btn-abs btn-abs-xtr-long">Clear Filter</span>
+    </button>
+
+    <label class="custom-file-upload btn btn-outline-dark mr-2 btn-rel btnExample btn-action">
+       <input type="file" name="file" accept=".csv,.xlsx" />
+       <span class="btn-abs">Import</span>
+        <img class="init_img" src="../../../../assets/img/dark-export.svg" height="14">
+        <img class="hover_img" src="../../../../assets/img/light-export.svg" height="14">
+    </label>
+    <!-- <button class="custom-file-upload btn btn-outline-dark mr-2 btn-rel btnExample btn-action">
+
+    <input type="file" name="file" accept=".csv,.xlsx">
+    <img class="init_img" src="../../../../assets/img/dark-export.svg" height="14">
+    <img class="hover_img" src="../../../../assets/img/light-export.svg" height="14">
+    <span class="btn-abs">Import</span>
+    </button> -->
+    <button type="submit" class="btn btn-outline-dark mr-2 btn-rel btnExample btn-action">
+        <!-- <i class="fa fa-arrow-down fa-lg" aria-hidden="true"></i> -->
+        <img class="init_img" src="../../../../assets/img/dark-download.svg" height="14">
+        <img class="hover_img" src="../../../../assets/img/light-download.svg" height="14">
+        <span class="btn-abs">Export</span>
+    </button>
+    <button type="button" class="btn btn-outline-dark mr-2 btn-rel btnExample btn-action" (click)="openColumn(columncontent)">
+        <!-- <i class="fa fa-bars fa-lg fa-rotate-90" aria-hidden="true"></i> -->
+        <img class="init_img" src="../../../../assets/img/dark-menu.svg" height="14">
+        <img class="hover_img" src="../../../../assets/img/light-menu.svg" height="14">
+        <span class="btn-abs btn-abs-3x-long">Column Selection</span>
+    </button>
+    <button class="btn btn-outline-dark btn-rel btnExample btn-action">
+        <img class="init_img" src="../../../../assets/img/dark-add.svg" height="14">
+        <img class="hover_img" src="../../../../assets/img/light-add.svg" height="14">
+        <span class="btn-abs">Create</span>
+    </button>
+</div>
+
+
+
+<ng-template #content7 let-modal>
+    <div class="modal-header py-2 d-flex justify-content-between align-items-center">
+      <h4 class="modal-title mb-0" id="modal-basic-title">Filters</h4>
+      <div class="d-flex align-items-center">
+        <!-- <button class="btn btn-success mr-3" (click)="show()">Advanced Search</button> -->
+        <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+      </div>
+     
+    </div>
+    <div class="modal-body" >
+  
+      <!-- <form [formGroup]="filterForm" *ngIf="hideFilter">
+      <div class="row" >
+        <div class="col-lg-4 col-md-6 col-sm-12" *ngFor="let column of columnKeyData">
+          <div class="form-group mb-2" >
+            <label for="market" class="mb-2" >{{column | titlecase}}</label>
+            <input type="text" class="form-control"  [formControlName]=column>
+        </div>
+        
+        </div>
+         
+      </div>
+    </form> -->
+    
+    <!-- <form name="editForm" [formGroup]="editForm" *ngIf="hideAdvanceFilter"> -->
+      <form name="editForm">
+      <div class="row">
+          <div class="col-lg-2 col-md-4">
+            <!-- <h5 class="mb-2 d-flex align-items-center justify-content-between">
+               <span><b>Saved Filters</b></span> 
+              
+              </h5> -->
+            <div class="table-responsive filter-table">
+              <table class="table table-bordered">
+                <tbody>
+                  <tr>
+                    <td  class="d-flex align-items-center justify-content-between" style="padding-right: 0px !important;border:none !important;">
+                      <span>titlecase</span> 
+                      <button type="button" class="btn text-danger">
+                        <!-- <i class="fa fa-trash fa-lg"></i> -->
+                        <img src="../../../../assets/img/dark-delete.svg" height="14">
+                      </button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="text-right mt-3">
+              <button class="btn btn-outline-dark"><i class="fa fa-plus"></i></button>
+            </div>
+           
+          </div>
+          <div class="col-lg-10 col-md-8">
+              <div class="product-search-advance-right">
+                  <div class="px-4 border-left">
+                    <h5>Search Criteria</h5>
+                    <div class="form-group d-flex align-items-center mb-3">
+                        <label class="w-15">Filter Name</label>
+                        <input class="form-control" placeholder="Filter Name" formControlName="name"> 
+                    </div>
+                   
+                     <div class="row" formArrayName="filterData">
+                         
+                          <div class="mb-2 w-100">
+                          
+                            <div class="d-flex align-items-center w-100 mb-2">
+                          <div class="d-flex align-items-center w-100 col-12">
+                              <div class="d-flex align-items-center w-100" >
+                                <div class="mr-2">1</div>
+                                <div class="mr-2 w-100 d-flex filter-rel">
+                                  <select class="form-control" formControlName="columnName"  id="3">
+                                    <option value="0"> Select Column </option>
+                                    <option value="1">C1</option>
+                                  </select>
+                                  <!-- <small class="form-text text-danger"
+                                  *ngIf="filterData.controls[i].get('columnName')?.errors?.['required']">
+                                  *
+                                  </small> -->
+                                  <div>
+                                 
+                              </div>
+                                </div>
+                                <div class="mr-2 w-100 d-flex filter-rel">
+                                  <select class="form-control" formControlName="condition" id="1">
+                                    <option value="0"> Select Condition </option>
+                                    <option value="="> = Equals</option>
+                                    <option value="!="> != Not Equals</option>
+                                    <option value="like"> a%c Is Like</option>
+                                    <option value="not like"> a%c Is Not Like</option>
+                                    <option value=">"> > Is Greater Than</option>
+                                    <option value=">="> >= Is Greater Than Or Equal To</option>
+                                    <option value="<"> < Is Less Than</option>
+                                    <option value="<="> <= Is Less Than Or Equal To</option>
+                                    <option value="is null">Is Null</option>
+                                    <option value="is not null">Is Not Null</option>
+                                  </select>
+                                  <!-- <small class="form-text text-danger"
+                                  *ngIf="filterData.controls[i].get('condition')?.errors?.['required']">
+                                  *
+                                  </small> -->
+                                  <div>
+                                
+                              </div>
+                                </div>
+                                <!-- <div>
+                                  <input type = "text" value="{{column.columnType}}">
+                                </div> -->
+                                <div class="mr-2 w-100 d-flex filter-rel">
+                                  <input type = "text" class="form-control " placeholder="Column Values"  formControlName="columnValue" id="5"> 
+                                  <input type = "number" class="form-control" placeholder="Column Values" formControlName="columnValue" id="6">
+                                  <input type = "date" class="form-control" placeholder="Column Values" formControlName="columnValue" id="7" >
+                                  <!-- <small class="form-text text-danger "
+                                  *ngIf="textFlagArray[i] && ifDataRequired('textColumnValue_'+i,i)" >
+                                  *
+                                  </small>
+                                  <small class="form-text text-danger"
+                                  *ngIf="numaricFlagArray[i] && ifDataRequired('numberColumnValue_'+i,i)" >
+                                  *
+                                  </small>
+                                  <small class="form-text text-danger"
+                                  *ngIf="dateFlagArray[i] && ifDataRequired('dateColumnValue_'+i,i)" >
+                                  *
+                                  </small> -->
+                                  <div>
+                                 
+                                  <!-- <small class="form-text text-danger"
+                                  *ngIf=" filterData.controls[i].get('columnValue')?.errors?.['required']">
+                                  This Field Is Required
+                                  </small> -->
+                              </div>
+                                </div>
+                                <div class="mr-2 w-100 d-flex filter-rel">
+                                <select class="form-control" formControlName="logicalCondition" id="1">
+                                  <option> Select Logical Condition </option>
+                                  <option value="AND">AND</option>
+                                  <option value="OR">OR</option>
+                                </select>
+                                <!-- <small class="form-text text-danger"
+                                *ngIf="filterData.controls[i].get('logicalCondition')?.errors?.['required']">
+                                *
+                                </small> -->
+                                <div>
+                               
+                            </div>
+                          </div>
+                              </div>
+                              <div class="ml-1 d-flex align-items-center">
+                                <div class="wd-42">
+                                <button class="btn mr-2 adv-scrh-btn" ><img src="../assets/img/magnifier.png" height="22"></button>
+                              </div>
+                                <button class="btn text-danger"><i class="fa fa-minus" aria-hidden="true"></i></button>
+                              </div>
+                              </div>
+                            </div>
+                            <div class="wd-34 text-right">
+                              <button class="btn btn-outline-dark mb-2"><i class="fa fa-plus"></i></button>
+                            </div>
+                          </div>
+                     </div>
+                    </div>
+                 
+              </div>
+          </div>
+      </div>
+    </form>
+  
+    </div>
+    <!-- <div class="modal-footer" *ngIf="hideAdvanceFilter"> -->
+    <div class="modal-footer">
+      <button type="button" class="btn btn-outline-dark mr-2" >Clear</button>
+      <button type="button" class="btn btn-outline-dark mr-2">Save</button>
+      <button class="btn btn-dark">Apply</button>
+    </div>
+  </ng-template>
+
+  <ng-template #columncontent let-modal>
+    <div class="modal-header py-2">
+      <div>
+        <h4 class="modal-title mb-0" id="modal-basic-title">Select Column
+        </h4>
+      </div>
+      <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+    </div>
+    <!-- <div class="tabs mx-4">
+      <div class="tab">
+        <input type="checkbox" id="chck1" class="accor" (change)="select('columnSelecton')">
+        <label class="tab-label" for="chck1">Column Selection</label>
+        <div class="tab-content"> -->
+          <div class="modal-body">
+          <form name="editForm" role="form" novalidate>
+            <div class="d-flex align-items-center pl-2 mt-2 ml-2">
+              <label>Select All</label>
+              <input class="ml-2" type="checkbox" checked> 
+            </div>
+            <div  cdkDropList class="modal-body d-flex justify-content-between">
+              <div class="w-100">
+                <ul class="pl-0">
+                  <li class="style-none d-flex align-items-center w-100 pos-rel"
+                    cdkDrag>
+                    <div class="drag-index ">1</div>
+                    <div class=" drag-icon d-flex align-items-center">
+                      <i class="material-icons" cdkDragHandle>reorder</i>
+                    </div>
+                    <div class="d-flex align-items-center justify-content-between">
+                      <div class="d-flex align-items-center">
+                        <input type="checkbox" class="mr-2" /><span>titlecase</span>
+                      </div>
+                      <select class="form-control w-84 abs-positon my-1">
+                        <option value="0">Sort</option>
+                        <option value="asc">ASC</option>
+                        <option value="desc">DESC</option>
+                      </select>
+                    </div>
+                  </li>
+                  <li class="style-none d-flex align-items-center w-100 pos-rel"
+                  cdkDrag>
+                  <div class="drag-index ">2</div>
+                  <div class=" drag-icon d-flex align-items-center">
+                    <i class="material-icons" cdkDragHandle>reorder</i>
+                  </div>
+                  <div class="d-flex align-items-center justify-content-between">
+                    <div class="d-flex align-items-center">
+                      <input type="checkbox" class="mr-2" /><span>titlecase</span>
+                    </div>
+                    <select class="form-control w-84 abs-positon my-1">
+                      <option value="0">Sort</option>
+                      <option value="asc">ASC</option>
+                      <option value="desc">DESC</option>
+                    </select>
+                  </div>
+                </li>
+                <li class="style-none d-flex align-items-center w-100 pos-rel"
+                cdkDrag>
+                <div class="drag-index ">3</div>
+                <div class=" drag-icon d-flex align-items-center">
+                  <i class="material-icons" cdkDragHandle>reorder</i>
+                </div>
+                <div class="d-flex align-items-center justify-content-between">
+                  <div class="d-flex align-items-center">
+                    <input type="checkbox" class="mr-2" /><span>titlecase</span>
+                  </div>
+                  <select class="form-control w-84 abs-positon my-1">
+                    <option value="0">Sort</option>
+                    <option value="asc">ASC</option>
+                    <option value="desc">DESC</option>
+                  </select>
+                </div>
+              </li>
+                </ul>
+              </div>
+            </div>
+          </form>
+          
+        <!-- </div>
+      </div> -->
+      <!-- <div class="tab">
+        <input type="checkbox" id="chck2" class="accor" (change)="select('sorting')">
+        <label class="tab-label" for="chck2">Shorting Columns</label>
+        <div class="tab-content">
+          <form name="editForm" role="form" novalidate>
+            <div class="d-flex align-items-center pl-2 mt-2 ml-2">
+              <label>Select All</label>
+              <input class="ml-2" type="checkbox" (change)="selectAllColumns($event)"> 
+            </div>
+            <div  cdkDropList class="modal-body d-flex justify-content-between" (cdkDropListDropped)="drop($event)">
+              <div>
+                <ul class="pl-0">
+                  <li class="style-none d-flex align-items-center" *ngFor="let column of fullMasterColumnsList; let i = index"
+                    cdkDrag>
+                    <div class="drag-index ">{{i+1}}</div>
+                    <div class=" drag-icon d-flex align-items-center ">
+                      <i class="material-icons" cdkDragHandle>reorder</i>
+                    </div>
+                    <div class="d-flex align-items-center" ><input type="checkbox" class="mr-2" [checked]="column.isSelected"  [disabled]="column.required"
+                      (change)="selectcolumns($event,column.name)"  /> {{column.aliasName | titlecase}}</div>
+                  </li>
+                </ul>
+                <select class="form-control">
+                  <option value =''>Select Column Order</option>
+                  <option value ='ASC'>ASC</option>
+                  <option value ='DESC'>DESC</option>
+                </select>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div> -->
+    </div>
+   
+    <div class="modal-footer">
+      <div>
+        <button type="button" class="btn btn-outline-dark mr-3"><i class="fa fa-arrow-left mr-1" aria-hidden="true"></i> Close</button>
+        <button type="button" class="btn btn-dark"><i class="fa fa-floppy-o mr-1" aria-hidden="true"></i>Save</button>
+      </div>
+    </div>
+  </ng-template>
+  

@@ -21,7 +21,13 @@ const routes: Routes = [
     path: 'file-explorer',
     loadChildren: () =>
       import('./modules/files/files.module').then((m) => m.FilesModule),
-  },
+  }, 
+  {
+    path: 'masterdata',
+    loadChildren: () =>
+      import('./modules/masterdata/masterdata.module').then((m) => m.MasterdataModule),
+  }, 
+
   {
     path: 'column_management',
     loadChildren: () =>
