@@ -45,8 +45,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 // import { LocalStorageService, provideNgxWebstorage, SessionStorageService, withLocalStorage, withNgxWebstorageConfig, withSessionStorage } from 'ngx-webstorage';
 // import { AuthInterceptor } from './blocks/interceptor/auth.interceptor';
 // import { RecruitersSharedModule } from './shared/shared.module';
-
-
+import { HttpClientModule } from '@angular/common/http';
+import { SharedModule } from './shared/shared.module';
+import { LocalStorageService, SessionStorageService } from 'ngx-webstorage';
+import { ServerLocalStorageService, ServerSessionStorageService } from './app.module.server';
 
 
 @NgModule({
@@ -55,6 +57,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     
   ],
   imports: [
+    
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
@@ -100,9 +103,13 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     MatFormFieldModule,
     MatInputModule,
     MatRippleModule,
+    HttpClientModule,
+ 
   ],
   providers: [provideHttpClient(),
-    //provideAnimationsAsync()
+    
+    { provide: LocalStorageService, useClass: ServerLocalStorageService },
+    { provide: SessionStorageService, useClass: ServerSessionStorageService }
   ],
   bootstrap: [AppComponent]
 })

@@ -55,7 +55,7 @@ import { CommonModule } from '@angular/common';
  
 import { SharedRoutingModule } from './shared-routing.module';
 import { FiltersComponent } from './filters/filters.component';
- 
+  import { provideNgxWebstorage } from 'ngx-webstorage'; 
  
 @NgModule({
   declarations: [
@@ -63,8 +63,16 @@ import { FiltersComponent } from './filters/filters.component';
   ],
   imports: [
     CommonModule,
-    SharedRoutingModule
+    SharedRoutingModule,
+    
   ],
+
+  providers: [
+    
+            provideNgxWebstorage(),
+  
+         ] ,
+
   exports:[FiltersComponent]
 })
 export class SharedModule { }
